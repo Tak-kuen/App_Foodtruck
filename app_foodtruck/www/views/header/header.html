@@ -43,7 +43,7 @@
 			};
 			$.ajax({
 				type:"post",
-				url:"http://39.127.7.90:8080/m.login",
+				url:"http://39.127.7.64:8080/m.login",
 				data: JSON.stringify(query),
 				contentType:"application/json; chartset=UTF-8",
 				success:function(data){
@@ -52,11 +52,11 @@
 					}else if("pwfail"==data){
 						alert("비밀번호가 틀렸습니다");
 					}else{
-						var json =JSON.parse(data);
+						//var json =JSON.parse(data);
 						alert(data);
-						sessionStorage.setItem('user',json.user);
-						sessionStorage.setItem('foodtruck',json.foodtruck.truck_code);
-						$('#nickname a').html(json.user.nickname);
+						sessionStorage.setItem('user',data.user);
+						sessionStorage.setItem('foodtruck',data.foodtruck.truck_code);
+						$('#nickname a').html(data.user.nickname);
 					}
 				},error:function(err) {
 					alert(JSON.stringify(err));
