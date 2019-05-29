@@ -53,7 +53,7 @@
 					}else if("pwfail"==data){
 						alert("비밀번호가 틀렸습니다");
 					}else{
-						var json =JSON.parse(data);
+						//var json =JSON.parse(data);
 						alert(data);
 						if(json.foodtruck) {
 							sessionStorage.setItem('foodtruck',json.foodtruck.truck_code);
