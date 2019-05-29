@@ -2,13 +2,25 @@
 p{
    color: rgb(255, 94, 24);
 }
+#toArea{
+	background-color: rgb(255, 94, 24);
+ 	color:white;
+ 	margin-left: 2%;
+}
+#toRecruit{
+	background-color: rgb(255, 94, 24);
+ 	color:white;
+ 	margin-left: 2%;
+}
+#search{
+	background-color: rgb(255, 94, 24);
+}
 #title {
 
    font-size: 200%;
    width:100%;
    margin: 0 auto;
 }
-
 #searchall{
    margin: 0 auto;
    width:100%;
@@ -32,7 +44,9 @@ p{
    margin: 0 auto;
    
 }  */
-
+.pagination{
+	margin-left: 40%;
+}
 #pageadd{
    
    background-color: rgb(255, 94, 24);
@@ -43,6 +57,8 @@ p{
 #table{
    width:100%;
    margin: 0 auto;
+   height:540px;
+   overflow-y:auto;
 }
 #nextall{
    width:100%;
@@ -51,6 +67,6 @@ p{
 
 
 
-span{
-   color: rgb(255, 94, 24);
+#top-right a{
+   color: rgb(255, 94, 24)!important;
 }

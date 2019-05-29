@@ -6,11 +6,11 @@
 	height: 600px;
 
 }
-	
-.sunjae{
-	width:200px;
-	margin: 0 auto;
-	text-align: center;
+.row {
+	margin:10px;
+	margin:3px;
+	height:800px;
+	overflow-y:auto;
 }
 .sg {
     transform: translate(8%,15%);

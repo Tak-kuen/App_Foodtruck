@@ -1,12 +1,12 @@
-var config = {
-	apiKey : "AIzaSyDgw_gFc9MB7Rc8Z7WjJUOqeWT6YQOqvxU",
-	authDomain : "fir-test-f3fea.firebaseapp.com",
-	databaseURL : "https://fir-test-f3fea.firebaseio.com",
-	projectId : "fir-test-f3fea",
-	storageBucket : "fir-test-f3fea.appspot.com",
-	messagingSenderId : "960564228551"
-};
-firebase.initializeApp(config);
+//var config = {
+//	apiKey : "AIzaSyDgw_gFc9MB7Rc8Z7WjJUOqeWT6YQOqvxU",
+//	authDomain : "fir-test-f3fea.firebaseapp.com",
+//	databaseURL : "https://fir-test-f3fea.firebaseio.com",
+//	projectId : "fir-test-f3fea",
+//	storageBucket : "fir-test-f3fea.appspot.com",
+//	messagingSenderId : "960564228551"
+//};
+//firebase.initializeApp(config);
 function ck() {
 	var isTrue = false;
 	if (fr.email.value == "") {
@@ -28,14 +28,15 @@ function ck() {
 	}
 	if (!isTrue) {
 		var query = {
-			email : fr.email.value,
-			nickname : fr.nickname.value,
-			telephone : fr.telephone.value
-		}
+			email : $('#email').val(),
+			nickname : $('#nickname').val(),
+			telephone : $('#telephone').val(),
+			password:$('#password').val()
+		};
 		console.log(query);
 		$.ajax({
-			url : "/project/login/idck",
-			type : "get",
+			url : "http://39.127.7.90:8080/m.login/",
+			type : "post",
 			data : query,
 			success : function(data) {
 				if ("email" == data) {
@@ -48,28 +49,33 @@ function ck() {
 					alert('등록된 전화번호입니다');
 					return false;
 				} else {
-					firebase.auth().createUserWithEmailAndPassword(fr.email.value,fr.password.value).catch(function(err) {
-						var errorCode=err.code;
-						var errorMessage=err.message;
-						if(errorCode=='auth/weak-password') {
-							alert('비밀번호 조건을 지켜주세요');
-							return false;
-						}else {
-							alert(errorMessage);
-							return false;
-						}
-						console.log(err);
-					});
-					$("#target").attr('onsubmit', 'true');
-					$('#target').submit();
+//					firebase.auth().createUserWithEmailAndPassword(fr.email.value,fr.password.value).catch(function(err) {
+//						var errorCode=err.code;
+//						var errorMessage=err.message;
+//						if(errorCode=='auth/weak-password') {
+//							alert('비밀번호 조건을 지켜주세요');
+//							return false;
+//						}else {
+//							alert(errorMessage);
+//							return false;
+//						}
+//						console.log(err);
+//					});
 				}
-
+			},error:function(err) {
+				alert(JSON.stringify(err));
 			}
 		});
 		
 	}
 	return false;
 }
+$(function() {
+	var init=function() {
+		$('#navbar').load("../header/header.html");
+	}
+	init();
+});
 // 원본 소스
 //var afterEmailAndNicknameCheck;
 //function toggleSignIn() {

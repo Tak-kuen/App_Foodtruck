@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\BON300-25\\Desktop\\app_foodtruck\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\BON300-25\\git\\App_Foodtruck\\app_foodtruck\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\BON300-25\\Desktop\\app_foodtruck\\platforms\\android\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "source": "C:\\Users\\BON300-25\\git\\App_Foodtruck\\app_foodtruck\\platforms\\android\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -38,6 +38,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\BON300-25\\git\\App_Foodtruck\\app_foodtruck\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "165,55,106",
+                        "endColumns": "63,50,58",
+                        "endOffsets": "224,101,160"
+                    },
+                    "to": {
+                        "startLines": "3,4,14",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "173,237,1297",
+                        "endColumns": "63,50,58",
+                        "endOffsets": "232,283,1351"
+                    }
+                },
+                {
                     "source": "C:\\Users\\BON300-25\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-messaging-10.2.6.aar\\be30be0fa4078e529d9409687cf7c589\\res\\values\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -52,23 +69,6 @@
                         "startOffsets": "599",
                         "endColumns": "81",
                         "endOffsets": "676"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\BON300-25\\Desktop\\app_foodtruck\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "165,55,106",
-                        "endColumns": "63,50,58",
-                        "endOffsets": "224,101,160"
-                    },
-                    "to": {
-                        "startLines": "3,4,14",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "173,237,1297",
-                        "endColumns": "63,50,58",
-                        "endOffsets": "232,283,1351"
                     }
                 }
             ]

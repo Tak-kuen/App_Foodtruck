@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+.mbox{
+	width:100%;	
+}
 .menuBox {
 	height: 60%;
 	border: 0.5px solid lightgray;

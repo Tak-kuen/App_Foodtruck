@@ -24,8 +24,9 @@
 				</div>
 				<div id="logined">
 				<span id="nickname" class="badge badge-light"><a href="#"></a></span>
-				<span id="" class="badge badge-light"><a href="#">마이페이지</a></span>
+				<span id="customer" class="badge badge-light"><a href="#">마이페이지</a></span>
 				<span id="logout" class="badge badge-light"><a href="#">로그아웃</a></span>
+				<span id="seller" class="badge badge-light"><a href="#"></a></span>
 				</div>
 			</div>
 		</div>
@@ -54,14 +55,22 @@
 					}else{
 						var json =JSON.parse(data);
 						alert(data);
+						if(json.foodtruck) {
+							sessionStorage.setItem('foodtruck',json.foodtruck.truck_code);
+							$('#seller>a').html("트럭관리").attr("href","../seller/sellerMain.html");
+						}else {
+							$('#seller>a').html("트럭등록").attr("href","../login/registerAgree.html");
+						}
 						sessionStorage.setItem('user',json.user);
-						sessionStorage.setItem('foodtruck',json.foodtruck.truck_code);
+						
 						$('#nickname a').html(json.user.nickname);
 					}
 				},error:function(err) {
 					alert(JSON.stringify(err));
 				}
 			});
+		} else {
+			$('#nickname a').html(json.user.nickname);
 		}
 		$('#logout').on('click',function() {
 			localStorage.removeItem('app_id');

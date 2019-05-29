@@ -6,69 +6,16 @@
 	<meta name="msapplication-tap-highlight" content="no">
 	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+   <link rel="stylesheet" href="../../css/general.css">
    <link rel="stylesheet" href="../../css/search/search.css">
-	<style>
-	.carousel-item {
-		height: 65vh;
-		min-height: 350px;
-		background: no-repeat center center scroll;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-	}
-	#top-right {
-		text-align: right;
-	}
-	#top-right {
-		margin-top: 50px;
-		margin-left: 26%;
-	}
-   #map {
-      height: 50%;
-   }
-   </style>
 	<script type="text/javascript" src="../../cordova.js"></script>
 	<script type="text/javascript" src="../../js/index.js"></script>
 	<script type="text/javascript" src="../../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 </head>
 <body>
-      <nav
-      class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-      <div class="container">
-         <a class="navbar-brand" href="../main/main.html">당신의 푸드트럭!</a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarResponsive" aria-controls="navbarResponsive"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-   
-               <li class="nav-item active"><a class="nav-link" href="#">트럭소개
-                     <span class="sr-only">(current)</span>
-               </a></li>
-               <li class="nav-item"><a class="nav-link" href="../search/search.html">트럭검색</a></li>
-               <li class="nav-item"><a class="nav-link" href="../announce/area.html">모집공고</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">앱 다운로드</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-            </ul>
-            <div id="top-right">
-               <c:if test="${sessionid == null}">
-               <span id="login" class="badge badge-light"><a href="login">로그인</a></span>
-               <span class="badge badge-light"><a href="register">회원가입</a></span>
-               </c:if>
-               <c:if test="${sessionid != null}">
-               <span id="" class="badge badge-light"><a href="#">${name }님</a></span>
-               <span id="" class="badge badge-light"><a href="#">마이페이지</a></span>
-               <span id="" class="badge badge-light"><a href="#">로그아웃</a></span>
-               </c:if>
-            </div>
-         </div>
-   
-      </div>
-   </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top" id="navbar">
+</nav>
 <div style="margin-top: 180px; border: solid 1px;"></div>
 <!-- <div id="menu_wrap" class="bg_white"> -->
 <!--    <div class="option"> -->
@@ -440,6 +387,12 @@ function change(){
        var d = R * c; // Distance in km
        return d;
    }
+   $(document).ready(function() {
+		var init=function() {
+			$('#navbar').load("../header/header.html");
+		}
+		init();
+   });
 </script>
 </body>
 

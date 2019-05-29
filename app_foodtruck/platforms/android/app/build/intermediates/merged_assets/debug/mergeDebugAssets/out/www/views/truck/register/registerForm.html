@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <meta http-equiv="Content-Security-Policy"
+		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<style>
+		.carousel-item {
+			height: 65vh;
+			min-height: 350px;
+			background: no-repeat center center scroll;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+
+		#top-right {
+			text-align: right;
+		}
+
+		#top-right {
+			margin-top: 50px;
+			margin-left: 26%;
+		}
+	</style>
+	<link rel="stylesheet" href="../../../css/truck/registerForm.css">
+	<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+	<script type="text/javascript" src="../../cordova.js"></script>
+	<script type="text/javascript" src="../../js/index.js"></script>
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+	</nav>
+	<div id="all">
+		<div id="member" class="card-header">트럭등록</div>
+		<div id="container">
+			<div id="box" class="row justify-content-center">
+				<div class="col-md-6">
+					<div id="card" class="card">
+						<article class="card-body">
+							<div class="form-group">
+								<label>트럭 상호명</label> <input id="brandname"name="brandname" type="text" class="form-control" placeholder="">
+							</div>
+							<div class="form-group">
+								<label>사업자번호</label> <input id="crn" name="crn" type="text" class="form-control" placeholder="">
+							</div>
+							<div class="form-group">
+								<label>트럭번호</label> <input id="trucknum" name="trucknum" type="text" class="form-control" placeholder="">
+							</div>
+							<div class="form-group">
+								<label>계좌번호</label> <input id="account" name="account" type="text" class="form-control" placeholder="">
+							</div>
+							<div class="form-group">
+								<label>고객 결제수단 &nbsp;: &nbsp;&nbsp;</label>
+								<input type="checkbox" id="ck1" name="pay"value="5">
+								<label for="ck1">현금</label>
+								<input type="checkbox" id="ck2" name="pay"value="3">
+								<label for="ck2">카드</label>
+								<input type="checkbox" id="ck3" name="pay" value="1">
+								<label for="ck3">카카오페이</label>	
+							</div>
+							<div class="form-group">
+								<label>운영시간</label>
+								<input id="Starttime" name="truck_starttime" type="time" class="form-control">~
+								<input id="Endtime" name="truck_endtime"type="time" class="form-control">		
+							</div>
+							<div class="form-group">
+								<label>[추가 기입 사항]</label> 
+								<textarea class="form-control" rows="3" name="truck_desc"></textarea>
+							</div>
+							<div class="form-group">
+								<input id="register" type="button" class="btn" value="트럭등록" />
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+			var arrayParam = new Array();
+			$("input:checkbox[name=paytype]:checked").each(function () {
+				arrayParam.push($(this).val());
+			});
+			var init = function () {
+				$('#navbar').load("../header/header.html");
+			}
+			init();
+			$('#email').val(localStorage['app_id']);
+			$('#register').click(function() {
+				var data={
+					brandname : $('#brandname').val(),
+					crn:$('#crn').val(),
+					trucknum:$('#trucknum').val(),
+					account:$('#account').val(),
+					paytype:$('#paytype').val(),
+					truck_starttime:$('#Starttime').val(),
+					truck_endtime:$('#Endtime').val()
+				};
+				$.ajax({
+					type:"post",
+					url:"http://39.127.7.90:8080/m.truck/register",
+					data:JSON.stringify(data),
+					contentType:"application/json; chartset=UTF-8",
+					success:function(result) {
+						alert("success");
+					},error:function(err) {
+						alert(JSON.stringify(err));
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

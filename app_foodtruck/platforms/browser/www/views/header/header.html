@@ -24,8 +24,9 @@
 				</div>
 				<div id="logined">
 				<span id="nickname" class="badge badge-light"><a href="#"></a></span>
-				<span id="" class="badge badge-light"><a href="#">마이페이지</a></span>
+				<span id="customer" class="badge badge-light"><a href="#">마이페이지</a></span>
 				<span id="logout" class="badge badge-light"><a href="#">로그아웃</a></span>
+				<span id="seller" class="badge badge-light"><a href="#"></a></span>
 				</div>
 			</div>
 		</div>
@@ -36,15 +37,16 @@
 		if((localStorage['app_id']!=null) && (localStorage['app_id']!="")) {
 			$('#haveToLogin').hide();
 			$('#logined').show();
+			alert(localStorage['app_id']+"" +localStorage['app_pw']);
 			var query =  {
 				email: localStorage['app_id'],
 				password: localStorage['app_pw']
 			};
 			$.ajax({
 				type:"post",
-				url:"https://39.127.7.90:8443/m.login",
-				data: query,
-				contentType:"application/json",
+				url:"http://39.127.7.90:8080/m.login",
+				data: JSON.stringify(query),
+				contentType:"application/json; chartset=UTF-8",
 				success:function(data){
 					if("idfail"==data){
 						alert("해당 아이디가없습니다");
@@ -53,12 +55,22 @@
 					}else{
 						var json =JSON.parse(data);
 						alert(data);
+						if(json.foodtruck) {
+							sessionStorage.setItem('foodtruck',json.foodtruck.truck_code);
+							$('#seller>a').html("트럭관리").attr("href","../seller/sellerMain.html");
+						}else {
+							$('#seller>a').html("트럭등록").attr("href","../login/registerAgree.html");
+						}
+						sessionStorage.setItem('user',json.user);
+						
 						$('#nickname a').html(json.user.nickname);
 					}
 				},error:function(err) {
 					alert(JSON.stringify(err));
 				}
 			});
+		} else {
+			$('#nickname a').html(json.user.nickname);
 		}
 		$('#logout').on('click',function() {
 			localStorage.removeItem('app_id');

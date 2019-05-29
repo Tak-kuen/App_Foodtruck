@@ -6,4 +6,7 @@ $(document).ready(function(){
 		history.back();
 		return false;
 	});
+	
+	
+	
 });

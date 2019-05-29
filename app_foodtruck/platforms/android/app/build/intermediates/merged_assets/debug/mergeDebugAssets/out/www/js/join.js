@@ -1,12 +1,12 @@
-var config = {
-	apiKey : "AIzaSyDgw_gFc9MB7Rc8Z7WjJUOqeWT6YQOqvxU",
-	authDomain : "fir-test-f3fea.firebaseapp.com",
-	databaseURL : "https://fir-test-f3fea.firebaseio.com",
-	projectId : "fir-test-f3fea",
-	storageBucket : "fir-test-f3fea.appspot.com",
-	messagingSenderId : "960564228551"
-};
-firebase.initializeApp(config);
+//var config = {
+//	apiKey : "AIzaSyDgw_gFc9MB7Rc8Z7WjJUOqeWT6YQOqvxU",
+//	authDomain : "fir-test-f3fea.firebaseapp.com",
+//	databaseURL : "https://fir-test-f3fea.firebaseio.com",
+//	projectId : "fir-test-f3fea",
+//	storageBucket : "fir-test-f3fea.appspot.com",
+//	messagingSenderId : "960564228551"
+//};
+//firebase.initializeApp(config);
 function ck() {
 	var isTrue = false;
 	if (fr.email.value == "") {
@@ -34,7 +34,7 @@ function ck() {
 		}
 		console.log(query);
 		$.ajax({
-			url : "/project/login/idck",
+			url : "/login/idck",
 			type : "get",
 			data : query,
 			success : function(data) {
@@ -48,18 +48,18 @@ function ck() {
 					alert('등록된 전화번호입니다');
 					return false;
 				} else {
-					firebase.auth().createUserWithEmailAndPassword(fr.email.value,fr.password.value).catch(function(err) {
-						var errorCode=err.code;
-						var errorMessage=err.message;
-						if(errorCode=='auth/weak-password') {
-							alert('비밀번호 조건을 지켜주세요');
-							return false;
-						}else {
-							alert(errorMessage);
-							return false;
-						}
-						console.log(err);
-					});
+//					firebase.auth().createUserWithEmailAndPassword(fr.email.value,fr.password.value).catch(function(err) {
+//						var errorCode=err.code;
+//						var errorMessage=err.message;
+//						if(errorCode=='auth/weak-password') {
+//							alert('비밀번호 조건을 지켜주세요');
+//							return false;
+//						}else {
+//							alert(errorMessage);
+//							return false;
+//						}
+//						console.log(err);
+//					});
 					$("#target").attr('onsubmit', 'true');
 					$('#target').submit();
 				}

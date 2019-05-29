@@ -100,6 +100,7 @@ $(document).ready(function() {
 			list[a].payment_class=1;
 			list[a].truck_code=$('#sessionTruckCode').val();
 			list[a].payment_telephone=payment_telephone;
+			list[a].payed='not';
 			firebase.database().ref('PaymentTest2/'+firebase.auth().currentUser.uid+'/'+list[0].payment_telephone +'/'+sysdate+'/'+a).set(list[a]);
 		}
 		$("#cashtelephone").val("");
@@ -128,6 +129,7 @@ $(document).ready(function() {
 			list[a].payment_class=0;
 			list[a].truck_code=$('#sessionTruckCode').val();
 			list[a].payment_telephone=payment_telephone;
+			list[a].payed='not';
 			firebase.database().ref('PaymentTest2/'+firebase.auth().currentUser.uid+'/'+list[0].payment_telephone +'/'+sysdate+'/'+a).set(list[a]);
 		}
 		$("#kakaotelephone").val("");

@@ -4,11 +4,11 @@ body {
 }
 
 .wrap {
-	width: 1300px;
+	width: 1000px;
 	height: 300px;
 	overflow-x: scroll;
-	white-space: nowrap;
 	overflow-y: hidden;
+	border: 1px solid skyblue;
 }
 
 .list {
@@ -17,11 +17,19 @@ body {
 	display: inline-block;
 	border: solid 3px;
 }
-
-wrap {
-	white-space: nowrap;
+.result {
+	width: 1000px;
+	height: 300px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	border: 1px solid pink;
 }
-
+.ended {
+	background-color: skyblue;
+}
+.payed {
+	background-color:gray;
+}
 .menu {
 	
 }

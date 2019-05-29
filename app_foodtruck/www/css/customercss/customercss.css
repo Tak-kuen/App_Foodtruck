@@ -1,15 +1,17 @@
 @charset "UTF-8";
 #container3 {
-	width: 220px;
+	width: 24%;
 	height: 220px;
 	margin: 0 auto;
 	margin-top: 2px;
+	background-color: rgb(255, 117, 57);
 }
 
 #container2 {
-	width: 270px;
+	width: 32%;
 	height: 270px;
 	margin: 0 auto;
+	background-color: rgb(255, 117, 57);
 }
 
 #title {
@@ -87,14 +89,15 @@
 	padding-top: 30px;
 }
 .img2{
+	
 	margin: 0 auto;
 	margin-top: 15px;
-	width:200px; 
+	width:50%; 
 	height: 180px;
 }
 .img1{
 	margin-top: 15px;
-	width:200px; 
+	width:50%; 
 	height: 200px;
 }
 #title{
@@ -126,4 +129,5 @@
 h4{
 	text-align: center;
 	margin-top: 5px;
+	width: 150;
 }

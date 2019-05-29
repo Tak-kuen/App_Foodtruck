@@ -6,24 +6,7 @@
 	<meta name="msapplication-tap-highlight" content="no">
 	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
 	<link rel="stylesheet" href="../../css/bootstrap.min.css">
-	<style>
-	.carousel-item {
-		height: 65vh;
-		min-height: 350px;
-		background: no-repeat center center scroll;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-	}
-			#top-right {
-		text-align: right;
-	}
-			#top-right {
-		margin-top: 50px;
-		margin-left: 26%;
-	}
-	</style>
+	<link rel="stylesheet" href="../../css/general.css">
 	<script type="text/javascript" src="../../cordova.js"></script>
 	<script type="text/javascript" src="../../js/index.js"></script>
 	<script type="text/javascript" src="../../js/jquery.min.js"></script>
@@ -34,12 +17,11 @@
 			$('#navbar').load("../header/header.html");
 		}
 		init();
-		alert("된다!");
 		var istrue = false;
 		$("#next2").click(function(){
 			chk();
 			if(istrue){
-				return true;
+				location.href="registerForm.html";
 			}else{
 				alert("필수 동의사항 체크해주세요");
 				return false;
@@ -59,12 +41,10 @@
 	</script>
 </head>
 <body>
-	<div id="logo">
-		<a href="../main/main.html">당신의 푸드트럭</a>
-	</div>
+	<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+	</nav>
 	<div id="all">
 		<div class="container">
-			<form id="main" name="registration" action="registerForm" method="post" >
 				<p>
 					<textarea id="rules">
 					
@@ -275,22 +255,17 @@ NAVER 내의 개별 서비스 이용, 이벤트 응모 및 경품 신청 과정�
     </textarea>
 				</p>
 				<p>
-					<input type="checkbox" id="agree2" name="accept" /> <label
-						for="agree2">개인정보 수집 및 이용에 대한 안내(필수)</label>
+					<input type="checkbox" id="agree2" name="accept" />
+					<label for="agree2">개인정보 수집 및 이용에 대한 안내(필수)</label>
 				</p>
 				<p>
-					<input type="checkbox" id="agree3" name="accept" /> <label
-						for="agree3">이벤트 알림 메시지 or 이메일 수신(선택)</label>
+					<input type="checkbox" id="agree3" name="accept" />
+					<label for="agree3">이벤트 알림 메시지 or 이메일 수신(선택)</label>
 				</p>
 				<div>
-				<button id="next2" type="submit"
-					class="btn" >다음</button>
+				<button id="next2" class="btn" >다음</button>
 			</div>
-			</form>
-
-
 		</div>
 	</div>
-	
 </body>
 </html>
