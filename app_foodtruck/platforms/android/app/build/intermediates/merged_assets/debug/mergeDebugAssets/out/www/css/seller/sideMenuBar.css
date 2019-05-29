@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.navBox {
+	border: 1px solid;
+}
+
+.menu a {
+	cursor:pointer;
+}
+
+.hide {
+	display:none;
+}
+
+li {
+	list-style: none;
+}
+
+ul {
+	padding-left: 0;
+}

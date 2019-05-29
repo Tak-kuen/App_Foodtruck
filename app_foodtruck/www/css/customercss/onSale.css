@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+#with {
+	margin: 0 auto;
+	margin-top: 150px;
+	width: 1200px;
+	height: 600px;
+
+}
+	
+.sunjae{
+	width:200px;
+	margin: 0 auto;
+	text-align: center;
+}
+.sg {
+    transform: translate(8%,15%);
+}
+h1{
+	text-align:center; 
+	margin-top:10px;
+}
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+    }
+    

@@ -1,0 +1,4 @@
+#Wed May 29 15:46:32 KST 2019
+base.0=C\:\\Users\\BON300-25\\Desktop\\app_foodtruck\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

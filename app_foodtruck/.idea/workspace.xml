@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4dbf2208-8a5b-452a-9731-840ba0175f48" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-android/framework/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cordova-android/framework/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-android/spec/fixtures/android_studio_project/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cordova-android/spec/fixtures/android_studio_project/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cordova-android/test/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cordova-android/test/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/CordovaLib/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/views/announce/area.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/views/header/header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/views/main/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/views/main/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/views/search/search.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/platform_www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/fetch.json" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/fetch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/views/announce/area.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/views/header/header.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/views/main/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/views/main/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/views/search/search.jsp" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-37728856">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="158" />
+    <option name="y" value="25" />
+    <option name="width" value="1560" />
+    <option name="height" value="1001" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="app_foodtruck" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="app_foodtruck" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="app_foodtruck" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="platforms" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="android" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4dbf2208-8a5b-452a-9731-840ba0175f48" name="Default Changelist" comment="" />
+      <created>1557379145761</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557379145761</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="158" y="25" width="1560" height="1001" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" visible="true" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.5006667" side_tool="true" weight="0.3290993" />
+      <window_info anchor="bottom" id="Build" sideWeight="0.49933332" visible="true" weight="0.3290993" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Gradle" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

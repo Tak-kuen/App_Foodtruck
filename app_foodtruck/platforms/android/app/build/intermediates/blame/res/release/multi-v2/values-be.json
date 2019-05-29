@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\BON300-25\\git\\Yourfoodtruck\\app_foodtruck\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-be\\values-be.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\BON300-25\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-10.2.6.aar\\65ff07fc714e2535425a64657f6dea35\\res\\values-be\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "285",
+                        "endColumns": "204",
+                        "endOffsets": "489"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "204",
+                        "endOffsets": "305"
+                    }
+                }
+            ]
+        }
+    ]
+}
