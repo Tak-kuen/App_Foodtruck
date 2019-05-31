@@ -7,37 +7,31 @@
 //	messagingSenderId : "960564228551"
 //};
 //firebase.initializeApp(config);
-function ck() {
+function ck(query) {
 	var isTrue = false;
-	if (fr.email.value == "") {
+	if (query.email == "") {
 		alert("이메일을 입력해주세요");
 		isTrue = false;
 		return false;
-	} else if (fr.password.value == "") {
+	} else if (query.password == "") {
 		alert("비밀번호를 입력하세요");
 		isTrue = false;
 		return false;
-	} else if (fr.nickname.value == "") {
+	} else if (query.nickname == "") {
 		alert("닉네임을 입력해주세요");
 		isTrue = false;
 		return false;
-	} else if (fr.telephone.value == "") {
+	} else if (query.telephone == "") {
 		alert("전화번호를 입력해주세요");
 		isTrue = false;
 		return false;
 	}
 	if (!isTrue) {
-		var query = {
-			email : $('#email').val(),
-			nickname : $('#nickname').val(),
-			telephone : $('#telephone').val(),
-			password:$('#password').val()
-		};
-		console.log(query);
 		$.ajax({
 			url : "http://39.127.7.90:8080/m.login/",
 			type : "post",
-			data : query,
+			data : JSON.stringify(query),
+			contentType:"application/json; chartset=UTF-8",
 			success : function(data) {
 				if ("email" == data) {
 					alert("사용중인 이메일 입니다");
@@ -49,32 +43,44 @@ function ck() {
 					alert('등록된 전화번호입니다');
 					return false;
 				} else {
-//					firebase.auth().createUserWithEmailAndPassword(fr.email.value,fr.password.value).catch(function(err) {
-//						var errorCode=err.code;
-//						var errorMessage=err.message;
-//						if(errorCode=='auth/weak-password') {
-//							alert('비밀번호 조건을 지켜주세요');
-//							return false;
-//						}else {
-//							alert(errorMessage);
-//							return false;
-//						}
-//						console.log(err);
-//					});
+					
 				}
 			},error:function(err) {
 				alert(JSON.stringify(err));
 			}
 		});
-		
+	return true;	
 	}
-	return false;
 }
 $(function() {
 	var init=function() {
 		$('#navbar').load("../header/header.html");
 	}
 	init();
+	$('#register').click(function() {
+		var nickname=$("#nickname_fd").val();
+		alert(nickname);
+		var query = {
+			email : $('#email').val(),
+			nickname : $('#nickname_fd').val(),
+			telephone : $('#telephone').val(),
+			password:$('#password').val()
+		};
+		console.log(query);
+		ck(query);
+		$.ajax({
+			type:"post",
+			url:"http://39.127.7.90:8080/m.login/insert",
+			contentType:"application/json; chartset=UTF-8",
+			data:JSON.stringify(query),
+			success:function(){
+				alert("등록완료");
+			},
+			error:function(err) {
+				alert("파베등록오류 " + JSON.stringify(err));
+			}
+		});
+	});
 });
 // 원본 소스
 //var afterEmailAndNicknameCheck;

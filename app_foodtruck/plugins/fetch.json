@@ -15,12 +15,20 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-browsersync": {
+  "cordova-plugin-firebase-core": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-browsersync"
+      "id": "cordova-plugin-firebase-core"
     },
-    "is_top_level": true,
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-cocoapod-support": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-cocoapod-support"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }

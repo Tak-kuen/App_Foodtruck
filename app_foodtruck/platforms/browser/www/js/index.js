@@ -28,6 +28,18 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        //FCM 알림 받았는지 아닌지
+        FCMPlugin.onNotification( function(data) {
+            if(data.wasUpdated) {
+                console.log("Push Notification tapped " ,data);
+            }else {
+                console.log("Push Notification". data);
+            }
+        },function (msg) {
+            console.log("onNotification callback successfully registered: "+ msg);
+        },function(err) {
+            console.log("Error registering onNotification callback :  " + err);
+        });
     },
 
     // Update DOM on a Received Event

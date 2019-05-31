@@ -28,5 +28,4 @@
     <preference name="fullscreen" value="true" />
     <allow-navigation href="*" />
     <preference name="stay-in-webview" value="true" />
-    <engine name="android" spec="^8.0.0" />
 </widget>

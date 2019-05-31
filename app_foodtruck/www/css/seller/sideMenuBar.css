@@ -4,8 +4,12 @@
 	border: 1px solid;
 }
 
+#sideMenuBar {
+	top:60px;
+}
 .menu a {
 	cursor:pointer;
+	color: rgb(255, 94, 24);
 }
 
 .hide {

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <meta http-equiv="Content-Security-Policy"
+		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/general.css">
+	<link rel="stylesheet" href="../../css/seller/sellerMain.css" />
+	<link rel="stylesheet" href="../../css/seller/sideMenuBar.css">
+	<link rel="stylesheet" href="../../css/seller/order/cuorder.css">
+	<script type="text/javascript" src="../../cordova.js"></script>
+	<script type="text/javascript" src="../../js/index.js"></script>
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+</head>
+<body>
+	<!-- <input type="hidden" id="sessionEmail"
+		value="${sessionScope.sessionid.email}">
+	<input type="hidden" id="sessionPw"
+		value="${sessionScope.sessionid.password}">
+	<input type="hidden" id="sessionTruckCode"
+		value="${sessionScope.seller.truck_code}">
+	<input type="hidden" id="orderTarget"
+		value="${requestScope.orderTarget}">
+	<input type="hidden" id="ref"> -->
+	<div id="cuorder">
+		<div id="logo">
+			<a href="../main/main.html">당신의 푸드트럭</a>
+		</div>
+		<div>
+			<div id="box">
+				<button id="click" class="btn">주문하기</button>
+				<!-- <button id="click2" class="btn">drink</button> -->
+				<div id="order">
+					<div id="box2">
+						<div id="foodlist">
+							<!-- <c:forEach var="s" items="${menulist}">
+								<button class="btn food"></button>
+								<p>${s.menu_name }</p>
+								<p>${s.unit_price }</p>
+								<input type="hidden" value="${s.menu_code }">
+							</c:forEach> -->
+						</div>
+					</div>
+					<h3 class="panel-title">주문목록</h3>
+					<div id="box3" class="">
+						<table class="table table-hover" id="">
+							<thead>
+								<tr>
+									<th style="width: 30%">이름</th>
+									<th style="width: 40%">수량</th>
+									<th style="width: 30%">가격</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					<div style="text-align: right; margin-right: 10%;">
+						<span style="font-size: 30px;">총 가격:</span><span
+							style="font-size: 30px" id="allprice">0</span>
+					</div>
+					<div id="click3">
+						<button id="card" class="btn c1">카드결제</button>
+						<button id="cash" class="btn c1">현금결제</button>
+						<button id="kakaopay" class="btn c1">카카오페이</button>
+						<button id="cancle1" class="btn c1">취소</button>
+					</div>
+				</div>
+				<div id="cashtel"style="display: none; text-align: center; width: 100%; margin-top: 50%; height: 50%;">
+				<div style="display: inline-block; width: 90%; height: 35%;">
+					<h3 style="">주문받으실 전화번호를 입력해주세요</h3>
+					<input id="cashtelephone" type="tel" style="width: 100%;"><br>
+					<button id="cashok" class="btn c1">확인</button>
+					<button id="cashcancle" class="btn c1">취소</button>
+					<button id="back" class="btn c1">주문추가</button>
+				</div>
+			</div>
+			<div id="kakaotel"style="display: none; text-align: center; width: 100%; margin-top: 50%; height: 50%;">
+				<div style="display: inline-block; width: 90%; height: 35%;">
+					<h3 style="">주문받으실 전화번호를 입력해주세요</h3>
+					<input id="kakaotelephone" type="tel" style="width: 100%;"><br>
+					<button id="kakaohok" class="btn c1">확인</button>
+					<button id="kakaocancle" class="btn c1">취소</button>
+					<button id="back2" class="btn c1">주문추가</button>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div id="seorder"></div>
+	<script type="text/javascript" src="../../js/seller/order.js"></script>
+</body>
+</html>

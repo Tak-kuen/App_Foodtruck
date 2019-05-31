@@ -1,9 +1,0 @@
-@charset "UTF-8";
-
-.content {
-	height: 50%;
-	border: 0.5px solid lightgray;
-	text-align: center;
-	padding-top: 2%;
-	display: inline-block;
-}

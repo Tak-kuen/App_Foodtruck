@@ -48,7 +48,7 @@
 				};
 				$.ajax({
 					type:"post",
-					url:"http://39.127.7.64:8080/m.login",
+					url:"http://39.127.7.90:8080/m.login",
 					data: JSON.stringify(query),
 					contentType:"application/json; charset=UTF-8",
 					success:function(data){
@@ -57,10 +57,12 @@
 						}else if("pwfail"==data){
 							alert("비밀번호가 틀렸습니다");
 						}else{
-							//var json =JSON.parse(data);
+							var json =JSON.parse(data);
 							localStorage['app_id']=$('#id').val();
 							localStorage['app_pw']=$('#pw').val();
-							localStorage['truck_code']=data.foodtruck.truck_code;
+							if(json.foodtruck) {
+								localStorage['truck_code']=json.foodtruck.truck_code;
+							}
 							//alert(JSON.stringify(localStorage['truck_code']));
 							/* window.location.href="/project/rehome";  */
 							location.href="../main/main.html";
