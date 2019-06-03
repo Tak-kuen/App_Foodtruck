@@ -156,7 +156,15 @@ $(document).ready(function () {
 			list[a].payed = 'not';
 			list[a].payment_regdate = sysdate;
 		}
-		sock.send(JSON.stringify(list));
+		var regdate=list[0].payment_regdate;
+		var forApp = {
+			[regdate] : list
+		};
+		var telephone=list[0].payment_telephone;
+		var sendObj = {
+			[telephone]:forApp
+		};
+		sock.send(JSON.stringify(sendObj));
 		// $.ajax({
 		// 	type: "post",
 		// 	url: "http://39.127.7.90:8080/m.pay/insertOrder",
@@ -200,7 +208,15 @@ $(document).ready(function () {
 			list[a].payed = 'not';
 			list[a].payment_regdate = sysdate;
 		}
-		sock.send(JSON.stringify(list));
+		var regdate=list[0].payment_regdate;
+		var forApp = {
+			[regdate] : list
+		};
+		var telephone=list[0].payment_telephone;
+		var sendObj = {
+			[telephone]:forApp
+		};
+		sock.send(JSON.stringify(sendObj));
 		// $.ajax({
 		// 	type: "post",
 		// 	url: "http://39.127.7.90:8080/m.pay/insertOrder",

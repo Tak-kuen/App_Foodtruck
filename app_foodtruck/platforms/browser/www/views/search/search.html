@@ -1,21 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="msapplication-tap-highlight" content="no">
-	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-   <link rel="stylesheet" href="../../css/bootstrap.min.css">
-   <link rel="stylesheet" href="../../css/general.css">
-   <link rel="stylesheet" href="../../css/search/search.css">
-	<script type="text/javascript" src="../../cordova.js"></script>
-	<script type="text/javascript" src="../../js/index.js"></script>
-	<script type="text/javascript" src="../../js/jquery.min.js"></script>
-	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top" id="navbar">
-</nav>
+<style>
+
+#fr {
+	margin-left: 40%;
+}
+
+.profile-teaser-left {
+	float: left;
+	width: 20%;
+	margin-right: 1%;
+}
+
+.profile-img img {
+	width: 100%;
+	height: auto;
+}
+
+.profile-teaser-main {
+	float: left;
+	width: 79%;
+}
+</style>
+<script></script>
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top"></nav>
 <div style="margin-top: 180px; border: solid 1px;"></div>
 <!-- <div id="menu_wrap" class="bg_white"> -->
 <!--    <div class="option"> -->
@@ -23,33 +33,18 @@
    <select id="select" onchange="change()">
       <option value='map'>지도</option>
       <option value='list'>목록</option>
-   </select> 검색 : <input type="text" value="" id="keyword" size="15"> <input
+   </select> 
+   검색 : <input type="text" value="" id="keyword" size="15"> <input
       id="submit" type="button" value="검색하기">
 </form>
 <div id="list" style="display: none">
 	<div class="container">
-		<div class="row">
-			<div id="list-group" class="list-group">
-				<!--             <div class="list-group-item clearfix">
-                <div class="profile-teaser-left">
-                    <div class="profile-img"><img src="https://static.pexels.com/photos/21011/pexels-photo-large.jpg"/></div>
-                </div>
-                <div class="profile-teaser-main">
-                    <h2 class="profile-name">무슨트럭</h2>
-                    <div class="profile-info">
-                        <div class="info"><span class="">영업시간:</span> 09~17</div>
-                        <div class="info"><span class="">트럭번호:</span> 13가1234</div><br>
-                        <div class="info"><span class="">★★★★☆</span> 9.4</div>
-                        <div class="info"><span class="">댓글</span> 400</div>
-                    </div>
-                    <button style="float: right;">탑승하기</button>
-                    <button style="float: right;">호출하기</button>
-                </div>
-            </div>item -->
-
-			</div>
-		</div>
-	</div>
+         <div class="row">
+            <div id="list-group" class="list-group">
+   
+            </div>
+         </div>
+      </div>
 </div>
 <!--    </div>
    <hr>
@@ -57,259 +52,323 @@
    <div id="pagination"></div> -->
 <!-- </div> -->
 
-
-<div id="map" style="width: 60%; height: 50%; margin: 0 auto;"></div>
+<div id="map" style="width:100%;height:400px; display: block;"></div>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo"></script>
+<script type="text/javascript" src="../../js/MarkerClustering.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo&submodules=geocoder"></script>
+<!-- <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=zprqsl0tqo"></script> -->
 <!-- <script type="text/javascript"
    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04b9ba1fd8fa1800dc5a03023c8372db&libraries=clusterer"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04b9ba1fd8fa1800dc5a03023c8372db&libraries=services"></script> -->
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b1d1757d7f3887c30f0142b09e5ff2be&libraries=services,clusterer,drawing"></script>
 <script>
+   $(document).ready(function(){
+    var init=function() {
+			$('#navbar').load("../header/header.html");
+		}
+		init();
 
-	
-   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-   mapOption = {
-      center : new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-      level : 14
-   // 지도의 확대 레벨
-   };
+      var list;
+      $.ajax({
+         type:"post",
+         url:"http://39.127.7.90:8080/m.search/load",
+         contentType:"application/json; charset=UTF-8",
+         async:false,
+         success:function(data){
+            console.log(data);
+            abcd(JSON.parse(data));
+         },
+         error:function(data){
+            alert("error");
+         }
+      });
+//list =JSON.parse(list);
+      $("#submit").click(function(){
+        var content= $("#keyword").val();
+        searchAddressToCoordinate(content);
+      });
 
-   // 지도를 생성합니다    
-   var map = new daum.maps.Map(mapContainer, mapOption);
-
-   // 장소 검색 객체를 생성합니다.
-   var ps = new daum.maps.services.Places(map);
-
-   // 마커 클러스터러를 생성합니다 
-   var clusterer = new daum.maps.MarkerClusterer({
-      map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-      averageCenter : true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-      minLevel : 10
-   // 클러스터 할 최소 지도 레벨 
-   });
-   var result = false; //검색결과가 있으면 true 없으면 false
-   //JSON.stringify
-   //JSON.parse
-   var a = '${loc}'; //
-   console.log(a);
-   var obj = JSON.parse(a);
-   obj = JSON.parse(a);
+      
+      $(document.body).on("click",".truck_list",function(){
+        alert("z");
+         var a = $(this);
+         var truck_code = a.find("input").val();
+         sessionStorage['food_code'] = truck_code;
+          location.href="truckinfo2.html";
+          //"../main/main.html";
+        // location.href="C:\Users\bon300-21\git\App_Foodtruck\app_foodtruck\www\views\truck\truckInfo.html";
+      });
    
-   //resources/js/food.json
-   // 데이터를 가져오기 위해 jQuery를 사용합니다
-   // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다
-   console.log(obj);
-   
- /*   for(var i=0;i<obj.length;i++){
-      console.log(obj.data[i].lng);
-   } */
-var test2=[];
-for(var i=0;i<obj.length;i++){
-   var a={};
-   a.latlng = new daum.maps.LatLng(obj[i].lay_y,obj[i].lng_x);
-   test2.push(a);	
-   
+    // $(this).click(function(e){
+    //     alert("z");
+    //     //alert("z");
+    //    // alert("ㅋ");
+	// console.log(e);
+	// var target = e.target;
+	// var temp= $(target).attr('class');
+    //   //$("#selected")
+    //   console.log(temp);
+    //   });
+function abcd(i){
+   list=i;
+   //console.log(list);
 }
-/* console.log(JSON.parse(JSON.stringify(test2)));
-console.log(test2);  */
-//}
-   //console.log(obj.positions[i].lng);
-   //var positions = obj;
-   //console.log(positions);
+
+console.log(list);
+var map = new naver.maps.Map("map", {
+        zoom: 2,
+        center: new naver.maps.LatLng(36.2253017, 127.6460516),
+        zoomControl: true,
+        zoomControlOptions: {
+            position: naver.maps.Position.TOP_LEFT,
+            style: naver.maps.ZoomControlStyle.SMALL
+        }
+    }),
+    markers = [];
+    infoWindows = [];
+var htmlMarker1 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-1.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker2 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-2.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker3 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-3.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker4 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-4.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker5 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-5.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    };
+
+   //var data = list;
    
-var zoomControl = new daum.maps.ZoomControl();
-map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-daum.maps.event.addListener(map, 'zoom_changed', function() {        
-    
-    // 지도의 현재 레벨을 얻어옵니다
-    var level = map.getLevel();
-	infowindow.close();
+   //console.log(data[0]);
+   
+   
+   //var data = accidentDeath.searchResult.accidentDeath;
+   var data = list;
+   console.log(data.length);
+   console.log(data[0].lay_y);
+   console.log(data[0].lng_x);
+for (var i = 0, ii = data.length; i < ii; i++) {
+    console.log(data[i].truck_code);
+    //var spot = data[i],
+        latlng = new naver.maps.LatLng(data[i].lay_y, data[i].lng_x),
+        marker = new naver.maps.Marker({
+            position: latlng
+        });
+        var contentString = [
+        '<div class="iw_inner">',
+        '   <h4>'+data[i].brandname+'</h4>',
+        '   <p>'+data[i].trucknum+'</p><br>',
+        '       <img src="/img/example/hi-seoul.jpg" width="55" height="55" alt="" class="thumb" /><br />',
+        '       <a href="../truck/truckinfo2.html?truck_code='+data[i].truck_code+'">트럭페이지 이동</a><br>',
+        '</div>'].join('');
+    var infoWindow = new naver.maps.InfoWindow({
+        content: contentString,
+        clickable:true 
+    // content: contentString
+   });   
+
+   
+  // var aaf = infoWindow.getContent();
+  // console.log(aaf);
+   //console.log(typeof(aaf));
+  // naver.maps.Event.addListener(infoWindow,"click", info(infoWindow));
+   //console.log(marker);
+   //naver.maps.Event.addListener(marker, "click",makeClickListener(map, marker, infowindow));
+   infoWindows.push(infoWindow);
+
+   //console.log(infowindow);
+   //  if (infowindow.getMap()) {
+   //      infowindow.close();
+   //  } else {
+   //      infowindow.open(map, marker);
+   //  }
+   //});
+   // naver.maps.Event.addListener(marker, "click", function(e) {
+   //  if (infowindow.getMap()) {
+   //      infowindow.close();
+   //  } else {
+   //      infowindow.open(map, marker);
+   //  }
+//});
+
+    markers.push(marker);
+}
+naver.maps.Event.addListener(map, 'idle', function() {
+    updateMarkers(map, markers);
 });
-// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
 
-   
-markers=[]; //마커를 넣을배열 생성
-var imageSrc = '/project/resources/image/트럭사진.png';// 마커이미지의 주소입니다    
+function updateMarkers(map, markers) {
 
+var mapBounds = map.getBounds();
+var marker, position;
 
- for (var i = 0; i < test2.length; i ++) {
-	 var imageSize = new daum.maps.Size(54, 59);
-	 var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
-	 	
-       var marker;
-       marker = new daum.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: test2[i].latlng,
-        image : markerImage,// 마커를 표시할 위치
-        clickable: true
-    });
-       
-       var infowindow = new daum.maps.InfoWindow({
-           content: '<div class="wrap">' + 
-           '    <div class="info">' + 
-           '        <div class="title">' + obj[i].brandname + 
-           '        </div>' + 
-           '        <div class="body">' + 
-           '            <div class="img">' +
-           '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-           '           </div>' + 
-           '            <div class="desc">' + 
-           '                <div class="ellipsis">트럭번호 : ' +obj[i].trucknum+'</div>' + 
-           '                <div class="jibun ellipsis">운행시간 : '+ obj[i].hours + '</div>' +  
-           '            </div>' + 
-           '        </div>' + 
-           '    </div>' +    
-           '</div>', // 인포윈도우에 표시할 내용
-           removable : true
-       });
+for (var i = 0; i < markers.length; i++) {
 
-       daum.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));         
-    	    
-    	    // 지도의 현재 레벨을 얻어옵니다
-       markers.push(marker); 
-} 
- clusterer.addMarkers(markers);
-   /*$.get('resources/js/food.json', function(data) {
-    // 데이터에서 좌표 값을 가지고 마커를 표시합니다
-    // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-    alert(data+"데이터요");
-    var marker = $(data.positions).map(function(i, position) {
-    return new daum.maps.Marker({
-   // title : position.content,
-    position : new daum.maps.LatLng(position.lat, position.lng)
-       });
-    });
-       
-     var infowindow = $(data.positions).map(function(i,position){
-         return new daum.maps.InfoWindow({
-            position : new daum.maps.LatLng(position.lat,position.lng),
-            content : '<div>'+position.content+'</div>',
-         });
-     });
-     
-        
-    //infowindow.open(map,markers[i]);
-   
-    // 클러스터러에 마커들을 추가합니다
-      for(var i=0;i<data.positions.legnth;i++){
-         infowindow.open(map, marker[i]);
-       }   
-    
-    clusterer.addMarkers(marker);
-   
-/*        for(var i=0;i<data.positions.length;i++){
-          daum.maps.event.addListener(marker[i], 'mouseover', makeOverListener(map, marker[i], infowindow[i]));
-              daum.maps.event.addListener(marker[i], 'mouseout', makeOutListener(infowindow[i]));
-          }
-   });*/ 
-       function makeClickListener(map, marker, infowindow) {
-           return function() {
-               infowindow.open(map, marker);
-           };
-       }
-  
-    // 키워드로 장소를 검색합니다
-function change(){
-    var select= $("#select option:selected").val();
-    if(select == "map"){
-       $("#keyword").val("");
-       map.setLevel(14);
-      $("#map").css("display",'block');
-      $("#list").css("display",'none');
-   }else if(select == "list"){
-       $("#keyword").val("");
-      $("#map").css("display", 'none');
-      $("#list").css("display", 'block');
-      $("#list-group").empty();
-   }
+    marker = markers[i]
+    position = marker.getPosition();
+
+    if (mapBounds.hasLatLng(position)) {
+        showMarker(map, marker);
+    } else {
+        hideMarker(map, marker);
+    }
 }
-    
-    $("#submit").click(function() {
-       searchPlaces();
-    });
-   
-   // 키워드 검색을 요청하는 함수입니다
-   function searchPlaces() {
-      var keyword = document.getElementById('keyword').value;
-      if (!keyword.replace(/^\s+|\s+$/g, '')) {
-         alert('키워드를 입력해주세요!');
-         return false;
-      }
-      // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-      
-      ps.keywordSearch(keyword, placesSearchCB); //나온데이터를 placesSerachCB 호출?
-      
-   }
+}
 
-   function placesSearchCB(data, status) {
-      if (status === daum.maps.services.Status.OK) {
-         // 정상적으로 검색이 완료됐으면
-         // 검색 목록과 마커를 표출합니다
-         /* console.log(data); */
-         this.result = true;
-         //alert(result);
-         console.log(status);
-         /* console.log(pagination); */
-         
-         displayPlaces(data);
-         
-         // 페이지 번호를 표출합니다
-         /* displayPagination(pagination); */
-      } else if (status === daum.maps.services.Status.ZERO_RESULT) {
 
-         alert('검색 결과가 존재하지 않습니다.');
-         result = false;
-         return;
+function showMarker(map, marker) {
 
-      } else if (status === daum.maps.services.Status.ERROR) {
-         alert('검색 결과 중 오류가 발생했습니다.');
-         result = false;
-         return;
-      }
-   }
-   // 검색 결과 목록과 마커를 표출하는 함수입니다
-   function displayPlaces(places) {
-      bounds = new daum.maps.LatLngBounds();
-      /* console.log(places); */
-      /*       var listEl = document.getElementById('placesList'), menuEl = document
-       .getElementById('menu_wrap'), fragment = document
-       .createDocumentFragment(), bounds = new daum.maps.LatLngBounds(), listStr = ''; */
+if (marker.setMap()) return;
+marker.setMap(map);
+}
 
-      // 검색 결과 목록에 추가된 항목들을 제거합니다
-      /* removeAllChildNods(listEl); */
+function hideMarker(map, marker) {
 
-      // 지도에 표시되고 있는 마커를 제거합니다
-      /* removeMarker(); */
+if (!marker.setMap()) return;
+marker.setMap(null);
+}
+function getClickHandler(seq) {
+    return function(e) {
+        //console.log("z");
+        var marker = markers[seq],
+            infoWindow = infoWindows[seq];
 
-      for (var i = 0; i < places.length; i++) {
+        if (infoWindow.getMap()) {
+            infoWindow.close();
+        } else {
+            infoWindow.open(map, marker);
+        }
+    }
+}
+function info(seq) {
+    return function(e) {
+        console.log("z");
+        // var marker = markers[seq],
+        //     infoWindow = infoWindows[seq];
 
-         // 마커를 생성하고 지도에 표시합니다
-         var placePosition = new daum.maps.LatLng(places[i].y, places[i].x);/* , marker = addMarker(
-                              placePosition, i), itemEl = getListItem(i, places[i]); */// 검색 결과 항목 Element를 생성합니다
+        // if (infoWindow.getMap()) {
+        //     infoWindow.close();
+        // } else {
+        //     infoWindow.open(map, marker);
+        // }
+    }
+}
 
-         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-         // LatLngBounds 객체에 좌표를 추가합니다
-         bounds.extend(placePosition);
-         map.setBounds(bounds);
-         
-      }
-   
-       var select= $("#select option:selected").val(); 
+// function aaaa(seq) {
+//     // return function(e) {
+//     //     var marker = markers[seq],
+//     //         infoWindow = infoWindows[seq];
+
+//     //     if (infoWindow.getMap()) {
+//     //         infoWindow.close();
+//     //     } else {
+//     //         infoWindow.open(map, marker);
+//     //     }
+//     // }
+//     alert("ㅋㅋㅋ");
+// }
+
+
+for (var i=0, ii=markers.length; i<ii; i++) {
+    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+}
+
+for (var i=0, ii=infoWindows.length; i<ii; i++) {
+    naver.maps.Event.addListener(infoWindows[i], 'click', info(i));
+}
+
+// for (var i=0, ii=markers.length; i<ii; i++) {
+//     naver.maps.Event.addListener(infoWindows[i], 'click', aaaa(i));
+// }
+
+
+// function makeClickListener(map, marker, infowindow) {
+//            return function() {
+//                infowindow.open(map, marker);
+//            };
+//        }
+
+
+var markerClustering = new MarkerClustering({
+    minClusterSize: 2,
+    maxZoom: 8,
+    map: map,
+    markers: markers,
+    disableClickZoom: false,
+    gridSize: 120,
+    icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
+    indexGenerator: [10, 100, 200, 500, 1000],
+    stylingFunction: function(clusterMarker, count) {
+        $(clusterMarker.getElement()).find('div:first-child').text(count);
+    }
+});
+
+function searchAddressToCoordinate(address) {
+    naver.maps.Service.geocode({
+        query: address
+    }, function(status, response) {
+        if (status === naver.maps.Service.Status.ERROR) {
+            return alert('Something Wrong!');
+        }
+
+        if (response.v2.meta.totalCount === 0) {
+            return alert('totalCount' + response.v2.meta.totalCount);
+        }
+
+        var htmlAddresses = [],
+            item = response.v2.addresses[0],
+            point = new naver.maps.Point(item.x, item.y);
+
+      console.log(point);
+      console.log(item);
+      console.log(htmlAddresses);
+      //   if (item.roadAddress) {
+      //       htmlAddresses.push('[도로명 주소] ' + item.roadAddress);
+      //   }
+
+      //   if (item.jibunAddress) {
+      //       htmlAddresses.push('[지번 주소] ' + item.jibunAddress);
+      //   }
+
+      //   if (item.englishAddress) {
+      //       htmlAddresses.push('[영문명 주소] ' + item.englishAddress);
+      //   }
+        
+
+        //map.fitBounds(point);
+
+      var select= $("#select option:selected").val(); 
        if(select =="list") {//선택한값이 list라면
-          var position = getposition();
-         console.log(position);
-         var posit = JSON.stringify(position);
-         var sub = posit.split(',');
-         var lng = sub[0].substr(6);
-         var xtemp = sub[1].substr(5);
-         var lat = xtemp.substr(0,xtemp.length-1);
-         console.log(lng);
-         console.log(lat);
+         //var position = getposition();
+         //console.log(position);
+         //var posit = JSON.stringify(position);
+        // var sub = posit.split(',');
+        // var lng = sub[0].substr(6);
+        // var xtemp = sub[1].substr(5);
+        // var lat = xtemp.substr(0,xtemp.length-1);
+         // console.log(lng);
+         // console.log(lat);
          
          var list2 = [];
-         for(var i=0;i<obj.length;i++){
-             var a = getDistanceFromLatLonInKm(lat,lng,obj[i].lay_y,obj[i].lng_x); 
+         for(var i=0;i<data.length;i++){
+             var a = getDistanceFromLatLonInKm(point.y,point.x,data[i].lay_y,data[i].lng_x); 
              a = a.toPrecision(3); //소숫점자리 제한
              a = a*1000; // 정수로만듬
              //alert(a);
@@ -317,7 +376,7 @@ function change(){
                 //alert("추가");
                 //JSON.stringfiy(obj[i]);
                 //console.log(JSON.stringfiy(obj[i]));
-                list2.push(obj[i]);//${"list[i].name"}
+                list2.push(data[i]);//${"list[i].name"}
                 
              }else{
                 //alert("안추가");
@@ -334,47 +393,36 @@ function change(){
          		var a='d';
          		var c=1;
          		var truck=list2[i].truck_code;
-             	$("#list-group").append("<div class='list-group-item clearfix'><div class='profile-teaser-left'><div class='profile-img'><a href='/project/truck/?truck_code="+list2[i].truck_code+"'><img src='https://static.pexels.com/photos/21011/pexels-photo-large.jpg'/></a></div></div><div class='profile-teaser-main'><div class='infobox' style='cursor:pointer'><h2 class='profile-name'>"+list2[i].brandname+"</h2><div class='info'><span class=''>영업시간:</span>" + list2[i].hours+"</div><div class='info'><span class=''>트럭번호:</span>" + list2[i].trucknum+"</div></div><br><div class='info'><span class=''>★★★★☆</span> 9.4</div><div class='info'><span class=''>댓글 " + list2[i].total_review + "</span> </div> </div> <button style='float: right;'>탑승하기</button><button style='float: right;'>호출하기</button> </div></div>");
-
+             	$("#list-group").append("<div class='list-group-item clearfix truck_list'><input type='hidden' value='"+list2[i].truck_code+"'> <div class='profile-teaser-left'><div class='profile-img'><img src='/resources/image/upload/"+list2[i].truck_url+"'/></div></div><div class='profile-teaser-main'><div class='infobox' style='cursor:pointer'><h2 class='profile-name'>"+list2[i].brandname+"</h2><div class='info'><span class=''>영업시간:</span>" + list2[i].truck_starttime+"~"+list2[i].truck_endtime+"</div><div class='info'><span class=''>트럭번호:</span>" + list2[i].trucknum+"</div></div><br><div class='info'><span class=''>★★★★☆</span> 9.4</div><div class='info'><span class=''>댓글 " + list2[i].total_review + "</span> </div> </div></div></div>");
          	}
         	
          }
          
+   }else{
+      map.setCenter(point);
+         map.setZoom(8); 
+         console.log(point.x);
+         console.log(point.y);
    }
- }
 
-	  
-   /* handler(a){
-	 	return function(e){
-			alert(a);
-	 	}
-  } */
-	/* function move(){
-	  alert($(this));
-	  console.log($(this).html());
-  }	 */
 
-   function getposition(){
-         var position = map.getCenter();
-         return position;
-   }
- 
-   var lat1 = 33.49953018214999;
-   var lag1 = 126.53117057093789;//제주시청
-   
-   var lat2 = 33.498982285015565;
-   var lng2 = 126.53052784147191;
-   
-   
-   var xarry = new Array();
-   var yarry = new Array();
-   
-   for(var i =0; i<3;i++){
-      xarry[i] = 33.49953018214999+i;
-      yarry[i] = 126.53117057093789+i;
-   }
-     //좌표와 좌표사이의 거리계산 
-   function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+
+    });
+}
+function reset(){
+   map.setZoom(2);
+}
+
+});
+// function makeClickListener(map,marker,infowindow){
+//     console.log(infowindow);
+//     if (infowindow.getMap()) {
+//         infowindow.close();
+//     } else {
+//         infowindow.open(map, marker);
+//     }
+// }
+function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
        function deg2rad(deg) {
            return deg * (Math.PI/180)
        }
@@ -387,12 +435,20 @@ function change(){
        var d = R * c; // Distance in km
        return d;
    }
-   $(document).ready(function() {
-		var init=function() {
-			$('#navbar').load("../header/header.html");
-		}
-		init();
-   });
+   function change(){
+    var select= $("#select option:selected").val();
+    if(select == "map"){
+       $("#keyword").val("");
+      // map.setZoom(10);
+      $("#map").css("display",'block');
+      $("#list").css("display",'none');
+   }else if(select == "list"){
+       $("#keyword").val("");
+      $("#map").css("display", 'none');
+      $("#list").css("display", 'block');
+      $("#list-group").empty();
+   }
+}
+   
 </script>
-</body>
 

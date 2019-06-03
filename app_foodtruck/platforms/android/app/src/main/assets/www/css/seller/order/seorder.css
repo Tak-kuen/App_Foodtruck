@@ -1,0 +1,57 @@
+@charset "UTF-8";
+body {
+	font-family: "Open Sans", sans-serif;
+}
+
+.wrap {
+	width: 1000px;
+	height: 300px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	border: 1px solid skyblue;
+}
+
+.list {
+	width: 300px;
+	height: 100%;
+	display: inline-block;
+	border: solid 3px;
+}
+.result {
+	width: 1000px;
+	height: 300px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	border: 1px solid pink;
+}
+.ended {
+	background-color: skyblue;
+}
+.payed {
+	background-color:gray;
+}
+.menu {
+	
+}
+
+.head {
+	
+}
+
+h4 {
+	text-align: center;
+}
+
+.num {
+	color: darkgreen;
+	float: left;
+	font-size: 1.8em;
+}
+
+.num+span {
+	float: right;
+}
+
+.num+span+div {
+	border: solid 3px;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+<title>당신의 푸드트럭</title>
+<link rel="stylesheet" href="../../css/customercss/onboard.css"/>" />
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+	var init=function() {
+			$('#navbar').load("../header/header.html");
+		}
+		init();
+		var email = localStorage.getItem('app_id');
+
+		var query = {
+			email : email
+		}
+
+		$.ajax({
+			type:"post",
+			url:"http://39.127.7.64:8080/m.customer/onboard",
+			data : JSON.stringify(query),
+			contentType:"application/json; charset=UTF-8",
+			success:function(data){
+				console.log(data);
+				//console.log(data[1].brandname);
+				console.log(data.length);
+				
+				for(var i=0;i<data.length;i++){
+					var content = '<div class="col-md-4">'
+							+'<div class="card mb-4 shadow-sm">'
+							+'<img src="/resources/image/upload/'
+							+ data[i].truck_url
+							+ '"'
+							+	'style="width: 100%; height: 225px;">'
+							+	'<div class="card-body">'
+							+	'<p class="card-text">'
+							+	data[i].brandname 
+							+ '<br>'
+							+ data[i].onboard_date
+							+'</p>'
+							+ '<div class="d-flex justify-content-between align-items-center">'
+							+'<div class="btn-group">'
+							+'<button class="btn btn-sm btn-outline-secondary detail">상세정보</button>'
+							+'<button class="btn btn-sm btn-outline-secondary delete">하차</button>'
+							+'<input class="truckcode" type="hidden"'
+							+ 'value="'
+							+ data[i].truck_code
+							+'" />'
+							+ '</div></div></div></div></div>';
+					$('.row').append(content);
+				}	
+
+			},
+			error:function(data){
+			}
+		});
+
+
+		$(document.body).on("click",".delete",function(){
+
+      var a = $(this);
+      //var truckcode = $("#truckcode").val();
+      var truckcode = a.next().val();
+      //alert(truckcode);
+      //var email= "${sessionScope.sessionid.email}";
+      
+		var email = localStorage.getItem('app_id');
+		var date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1; //months from 1-12
+      var day = date.getDate();
+      
+      if((day+"").length < 2){
+         day = "0" + day;
+      }else if((month+"").length < 2){
+         month = "0" + month;
+      }
+      var today = year + "-" + month + "-" + day;
+      // alert(today);
+      // alert(truckcode);
+      // alert(email);
+
+		var query = {
+			truck_code :truckcode,
+			email :email,
+			out_date : today
+		}
+
+      $.ajax({
+         type : "post",
+         url : "http://39.127.7.64:8080/m.customer/Deleteride",
+         // data : {
+         //    "truck_code" : truckcode, "email" : email, "out_date" : today
+         // },
+			data :JSON.stringify(query),
+			contentType:"application/json; charset=UTF-8",
+         success : function(data) {
+            alert("하차되었습니다.");
+            location.reload();
+         },
+         error : function(err) {
+            alert("오류발생");
+         }
+      });
+   });
+	$(document).on("click",".detail",function(){
+      //var truck_code = $("#truckcode").val();
+      var a = $(this);
+      var truck_code = a.next().next().val();
+         location.href = "../truck/info/truckinfo2.html?truck_code="+truck_code;
+   });
+});
+</script>
+</head>
+<body>
+		<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+			</nav>			
+	<div id="with" class="col">
+		<h1 style="text-align: center; margin-top: 10px;">탑승중인 트럭</h1>
+		<br>
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<div class="row">
+					<!-- <c:forEach var="i" items="${onboard}">
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img src="/resources/image/upload/${i.truck_url }"
+									style="width: 100%; height: 225px;">
+								<div class="card-body">
+									<p class="card-text">${i.brandname} ${i.onboard_date}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<button class="btn btn-sm btn-outline-secondary detail">상세정보</button>
+											<button class="btn btn-sm btn-outline-secondary delete">하차</button>
+											<input class="truckcode" type="hidden"
+												value="${i.truck_code}" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

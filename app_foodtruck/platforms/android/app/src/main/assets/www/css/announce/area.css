@@ -1,0 +1,72 @@
+@charset "UTF-8";
+p{
+   color: rgb(255, 94, 24);
+}
+#toArea{
+	background-color: rgb(255, 94, 24);
+ 	color:white;
+ 	margin-left: 2%;
+}
+#toRecruit{
+	background-color: rgb(255, 94, 24);
+ 	color:white;
+ 	margin-left: 2%;
+}
+#search{
+	background-color: rgb(255, 94, 24);
+}
+#title {
+
+   font-size: 200%;
+   width:100%;
+   margin: 0 auto;
+}
+#searchall{
+   margin: 0 auto;
+   width:100%;
+}
+.form-inline{
+   width:100%;
+}
+
+#searchbox{
+   width:35%;
+}
+#searchbutton{
+   
+   background-color: rgb(255, 94, 24);
+   color:white;
+}
+#pageadd{
+   margin-left: 2px;
+}
+/* #add{
+   margin: 0 auto;
+   
+}  */
+.pagination{
+	margin-left: 40%;
+}
+#pageadd{
+   
+   background-color: rgb(255, 94, 24);
+   color: white;
+
+   
+}
+#table{
+   width:100%;
+   margin: 0 auto;
+   height:540px;
+   overflow-y:auto;
+}
+#nextall{
+   width:100%;
+   
+} 
+
+
+
+#top-right a{
+   color: rgb(255, 94, 24)!important;
+}

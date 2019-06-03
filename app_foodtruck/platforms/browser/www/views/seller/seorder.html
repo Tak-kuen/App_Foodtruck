@@ -76,15 +76,16 @@
 			}
 			console.log(list);
 			$.ajax({
-				type: "POST",
-				url: "/project/pay/insertPayment",
+				type: "post",
+				url: "http://39.127.7.90:8080/m.pay/insertOrder",
 				data: JSON.stringify(list),
-				contentType: "application/json;charset=UTF-8",
-				traditional: true,
+				contentType: "application/json; chartset=UTF-8",
 				success: function (data) {
-					console.log('success');
-				}, error: function (err) {
-					console.log(err);
+					var json = JSON.parse(data);
+					alert(json.result);
+				},
+				error: function (err) {
+					alert(JSON.stringify(err));
 				}
 			});
 			isChecked = true;
@@ -118,18 +119,16 @@
 			};
 			$.ajax({
 				type: "POST",
-				url: "/project/pay/updatePayment",
+				url: "http://39.127.7.90:8080/m.pay/updatePayment",
 				data: JSON.stringify(data),
 				contentType: "application/json;charset=UTF-8",
 				traditional: true,
 				success: function (data) {
 					console.log('success');
 				}, error: function (err) {
-					console.log(err);
+					console.log(JSON.stringify(err));
 				}
 			});
-			var delref = firebase.database().ref('/PaymentTest2/' + _uid + '/' + telephone + '/' + a);
-			delref.remove();
 		} else if (!isChecked) {
 			alert("결제확인을 먼저 하십시오");
 		}
@@ -142,9 +141,72 @@
 
 		// 서버로부터 메시지를 받았을 때
 		function onMessage(msg) {
-			alert(msg);
-			console.log(typeof msg);
-			console.log(msg);
+			var result=JSON.parse(msg.data);
+			console.log(typeof result);
+			console.log(result);
+				for (var menus in result) {
+					console.log('=====결과를 전화번호별로 구분=====');
+					console.log(menus);
+					console.log(result[menus]);
+					var orderList = result[menus];
+
+					for (var order in orderList) {
+						console.log('=======전화번호별 거래내용들을 보여줌(같은번호로 했을떄 한개만)=======');
+						console.log(orderList[order]);//전화번호별 거래내역
+						console.log("'" + order + "'");//전화번호
+						var order_index = order_index = orderList[order].length;//한사람당 주문한 제품개수
+						console.log(order_index);
+						$('.wrap').prepend('<div id="list" class="list" style=""><div class="head"><h4>' + orderList[order][0].payment_telephone + '</h4><span class="num">01</span> <span class="">주문시간</span><div style="margin-top: 15%;"><span>경과시간</span></div></div><div id="' + orderList[order][0].payment_telephone + '" class="menu"style="height: 140px; overflow-y: scroll; overflow-x: hidden;"></div><button id="' + order + '"  onclick="pay(\'' + order + '\')" class="pay">결제확인</button><input type="hidden" value="\'' + orderList[order][0].payment_telephone + '\'"><input type="hidden" value="${sessionScope.seller.truck_code }"><button class="release" onclick="release(\'' + order + '\')">출고확인</button></div>');
+						if (order_index > 1) {
+							for (var i = 0; i < order_index; i++) {
+								$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
+								/* 							$('.menu').append('<span class="orderInfo">'+orderList[order][i].total_price+'</span><br/>');
+															$('.menu').append('<span class="orderInfo">'+orderList[order][i].payment_telephone+'</span><br/>'); */
+							}
+						} else {
+							$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
+							/* 						$('.menu').append('<span class="orderInfo">'+orderList[order][0].total_price+'</span><br/>');
+													$('.menu').append('<span class="orderInfo">'+orderList[order][0].payment_telephone+'</span><br/>');	 */
+						}
+						break;
+					}
+				}
+			// else {
+			// 	$('.wrap').html("");
+			// 	for (var menus in result) {
+			// 		console.log('=====결과를 전화번호별로 구분=====');
+			// 		console.log(menus);
+			// 		console.log(result[menus]);
+			// 		var orderList = result[menus];
+
+			// 		for (var order in orderList) {
+			// 			console.log('=======전화번호별 거래내용들을 보여줌(같은번호로 했을떄 한개만)=======');
+			// 			console.log(orderList[order]);//전화번호별 거래내역
+			// 			console.log(order);//전화번호
+			// 			var order_index = order_index = orderList[order].length;//한사람당 주문한 제품개수
+
+			// 			console.log(order_index);
+			// 			$('.wrap').append('<div id="list" class="list" style=""><div class="head"><h4>' + orderList[order][0].payment_telephone
+			// 				+ '</h4><span class="num">01</span> <span class="">주문시간</span><div style="margin-top: 15%;"><span>경과시간</span></div></div><div id="'
+			// 				+ orderList[order][0].payment_telephone
+			// 				+ '" class="menu"style="height: 140px; overflow-y: scroll; overflow-x: hidden;"></div><button id="' + order
+			// 				+ '"  onclick="pay(\'' + order + '\')" class="pay">결제확인</button><input type="hidden" value="\''
+			// 				+ orderList[order][0].payment_telephone + '\'"><input type="hidden" value="${sessionScope.seller.truck_code }"><button class="release"  onclick="release(\'' + order + '\')">출고확인</button></div>');
+			// 			if (order_index > 1) {
+			// 				for (var i = 0; i < order_index; i++) {
+			// 					$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
+			// 					/* 							$('.menu').append('<span class="orderInfo">'+orderList[order][i].total_price+'</span><br/>');
+			// 												$('.menu').append('<span class="orderInfo">'+orderList[order][i].payment_telephone+'</span><br/>'); */
+			// 				}
+			// 			} else {
+			// 				$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
+			// 				/* 						$('.menu').append('<span class="orderInfo">'+orderList[order][0].total_price+'</span><br/>');
+			// 										$('.menu').append('<span class="orderInfo">'+orderList[order][0].payment_telephone+'</span><br/>');	 */
+			// 			}
+			// 			break;
+			// 		}
+			// 	}
+			// }
 		}
 
 		// 서버와 연결을 끊었을 때
@@ -179,73 +241,7 @@
 		// });
 		var index;
 		// ref.on('value', function (snapshot) {
-		// 	if (isfirst) {
-		// 		var result = snapshot.val();
-		// 		for (var menus in result) {
-		// 			console.log('=====결과를 전화번호별로 구분=====');
-		// 			console.log(menus);
-		// 			console.log(result[menus]);
-		// 			var orderList = result[menus];
-
-		// 			for (var order in orderList) {
-		// 				console.log('=======전화번호별 거래내용들을 보여줌(같은번호로 했을떄 한개만)=======');
-		// 				console.log(orderList[order]);//전화번호별 거래내역
-		// 				console.log("'" + order + "'");//전화번호
-		// 				var order_index = order_index = orderList[order].length;//한사람당 주문한 제품개수
-		// 				console.log(order_index);
-		// 				$('.wrap').append('<div id="list" class="list" style=""><div class="head"><h4>' + orderList[order][0].payment_telephone + '</h4><span class="num">01</span> <span class="">주문시간</span><div style="margin-top: 15%;"><span>경과시간</span></div></div><div id="' + orderList[order][0].payment_telephone + '" class="menu"style="height: 140px; overflow-y: scroll; overflow-x: hidden;"></div><button id="' + order + '"  onclick="pay(\'' + order + '\')" class="pay">결제확인</button><input type="hidden" value="\'' + orderList[order][0].payment_telephone + '\'"><input type="hidden" value="${sessionScope.seller.truck_code }"><button class="release" onclick="release(\'' + order + '\')">출고확인</button></div>');
-		// 				if (order_index > 1) {
-		// 					for (var i = 0; i < order_index; i++) {
-		// 						$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
-		// 						/* 							$('.menu').append('<span class="orderInfo">'+orderList[order][i].total_price+'</span><br/>');
-		// 													$('.menu').append('<span class="orderInfo">'+orderList[order][i].payment_telephone+'</span><br/>'); */
-		// 					}
-		// 				} else {
-		// 					$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
-		// 					/* 						$('.menu').append('<span class="orderInfo">'+orderList[order][0].total_price+'</span><br/>');
-		// 											$('.menu').append('<span class="orderInfo">'+orderList[order][0].payment_telephone+'</span><br/>');	 */
-		// 				}
-		// 				break;
-		// 			}
-		// 		}
-		// 		isfirst = false;
-		// 	} else {
-		// 		$('.wrap').html("");
-		// 		var result = snapshot.val();
-		// 		for (var menus in result) {
-		// 			console.log('=====결과를 전화번호별로 구분=====');
-		// 			console.log(menus);
-		// 			console.log(result[menus]);
-		// 			var orderList = result[menus];
-
-		// 			for (var order in orderList) {
-		// 				console.log('=======전화번호별 거래내용들을 보여줌(같은번호로 했을떄 한개만)=======');
-		// 				console.log(orderList[order]);//전화번호별 거래내역
-		// 				console.log(order);//전화번호
-		// 				var order_index = order_index = orderList[order].length;//한사람당 주문한 제품개수
-
-		// 				console.log(order_index);
-		// 				$('.wrap').append('<div id="list" class="list" style=""><div class="head"><h4>' + orderList[order][0].payment_telephone
-		// 					+ '</h4><span class="num">01</span> <span class="">주문시간</span><div style="margin-top: 15%;"><span>경과시간</span></div></div><div id="'
-		// 					+ orderList[order][0].payment_telephone
-		// 					+ '" class="menu"style="height: 140px; overflow-y: scroll; overflow-x: hidden;"></div><button id="' + order
-		// 					+ '"  onclick="pay(\'' + order + '\')" class="pay">결제확인</button><input type="hidden" value="\''
-		// 					+ orderList[order][0].payment_telephone + '\'"><input type="hidden" value="${sessionScope.seller.truck_code }"><button class="release"  onclick="release(\'' + order + '\')">출고확인</button></div>');
-		// 				if (order_index > 1) {
-		// 					for (var i = 0; i < order_index; i++) {
-		// 						$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
-		// 						/* 							$('.menu').append('<span class="orderInfo">'+orderList[order][i].total_price+'</span><br/>');
-		// 													$('.menu').append('<span class="orderInfo">'+orderList[order][i].payment_telephone+'</span><br/>'); */
-		// 					}
-		// 				} else {
-		// 					$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
-		// 					/* 						$('.menu').append('<span class="orderInfo">'+orderList[order][0].total_price+'</span><br/>');
-		// 											$('.menu').append('<span class="orderInfo">'+orderList[order][0].payment_telephone+'</span><br/>');	 */
-		// 				}
-		// 				break;
-		// 			}
-		// 		}
-		// 	}
+		// 	
 		// });
 	});
 </script>

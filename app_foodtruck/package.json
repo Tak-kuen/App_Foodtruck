@@ -13,6 +13,7 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
+    "cordova-android": "^8.0.0",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-fcm-with-dependecy-updated": "^2.4.0",
     "cordova-plugin-firebase-realtime-database": "0.0.2"
@@ -27,7 +28,8 @@
       "cordova-plugin-fcm-with-dependecy-updated": {}
     },
     "platforms": [
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

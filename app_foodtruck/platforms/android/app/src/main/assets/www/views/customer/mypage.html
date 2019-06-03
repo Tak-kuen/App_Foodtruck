@@ -1,0 +1,57 @@
+<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/customercss/customercss.css">
+<script type="text/javascript" src="../../cordova.js"></script>
+	<script type="text/javascript" src="../../js/index.js"></script>
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		var init=function() {
+			$('#navbar').load("../header/header.html");
+		}
+		init();
+	});
+	</script>
+<script>
+	$(document).ready(function() {
+		$(".review").click(function() {
+            location.href = "review.html";
+		});
+		$(".callList").click(function() {
+			location.href = "callList.html";
+		});
+		$(".goodbyeForm").click(function() {
+			location.href = "goodbyeForm.html";
+		});
+		$(".onboard").click(function() {
+			location.href = "onboard.html";
+		});
+		$(".onSale").click(function() {
+			location.href = "onSale.html";
+		});
+		$(".cusInfo").click(function() {
+			location.href = "cusInfo.html";
+		});
+		$(".myQuestion").click(function() {
+			location.href = "myQuestion.html";
+		});
+	});
+</script>
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top" style="position:relative">
+</nav>
+<div>
+	<div id="title" class="col">
+
+		<button id="container3" class="text onboard col btn btn-default"><h5>탑승<br>트럭</h5><img src="../../image/onboard.svg" class="img2"></button>
+		<button id="container3" class="text onSale col btn btn-default"><h5>운행<br>트럭</h5><img src="../../image/onSale.svg" class="img2"></button>
+		<button id="container3" class="text review col btn btn-default" ><h5>리뷰 및<br>평점</h5><img src="../../image/review.svg" class="img2"></button>
+		<button id="container3" class="text callList col btn btn-default"><h5>호출<br>내역</h5><img src="../../image/callList.svg" class="img2"></button>
+	</div>
+	<div id="title2" class="col">
+		<button id="container2" class="text2 cusInfo col btn btn-default"><h5>회원 정보<br> 관리</h5><img src="../../image/cusInfo.svg" class="img1"></button>
+		<button id="container2" class="text2 col myQuestion btn btn-default"><h5>1:1문의<br>내역</h5><img src="../../image/myQuestion.svg" class="img1"></button>
+		<button id="container2" class="text2 goodbyeForm col btn btn-default"><h5>회원<br>탈퇴</h5><img src="../../image/goodbyeForm.svg" class="img1"></button>
+	</div>
+</div>
+

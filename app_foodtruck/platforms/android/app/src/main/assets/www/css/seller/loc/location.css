@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+
+
+.search{
+		margin: 0 auto;
+		margin-top: 50px;
+}
+#map{
+	width: 100%;
+	height: 300px;
+	
+}
+#result{
+	margin-top: 55px;
+	margin-right: 30%;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <meta http-equiv="Content-Security-Policy"
+		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/general.css">
+	<link rel="stylesheet" href="../../css/seller/sellerMain.css" />
+	<link rel="stylesheet" href="../../css/seller/sideMenuBar.css">
+	<!-- <script type="text/javascript" src="../../js/seller/sellerMain.js"></script> -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="../../cordova.js"></script>
+	<script type="text/javascript" src="../../js/index.js"></script>
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+	<style>
+		#cuorder, #seorder{
+			margin-top:13%;
+			display: inline-block;
+			width: 15em;
+			height: 13em;
+		}
+		#button{
+			margin :0 auto;
+			width:100%;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+</nav>
+<div class="container">
+	<div class="row">
+		<div id="sideMenuBar"class="col-md-3">
+		</div>
+		<div class="col-md-9">
+			<div id="button">
+				<a href="cuorder.html"><button id="cuorder" >현장 고객용</button></a>
+				<a href="seorder.html"><button id="seorder" >현장 상인용</button></a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		var init = function () {
+			$('#navbar').load("../header/header.html");
+	
+			$('#sideMenuBar').load("sideMenuBar.html");
+		}
+		init();
+	});
+</script>
+</body>
+</html>

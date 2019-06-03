@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+
+.menu a {
+	cursor:pointer;
+}
+
+.hide {
+	display:none;
+}
+
+li {
+	list-style: none;
+}

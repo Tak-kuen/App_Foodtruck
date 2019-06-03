@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.navBox {
+	border: 1px solid;
+}
+
+#sideMenuBar {
+	top:60px;
+}
+.menu a {
+	cursor:pointer;
+	color: rgb(255, 94, 24);
+}
+
+.hide {
+	display:none;
+}
+
+li {
+	list-style: none;
+}
+
+ul {
+	padding-left: 0;
+}
