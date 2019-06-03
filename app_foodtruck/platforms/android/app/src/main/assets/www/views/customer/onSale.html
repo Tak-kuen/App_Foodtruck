@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type:"post",
-			url:"http://39.127.7.64:8080/m.customer/onSale",
+			url:"http://39.127.7.90:8080/m.customer/onSale",
 			data : JSON.stringify(query),
 			contentType:"application/json; charset=UTF-8",
 			success:function(data){
@@ -93,7 +93,7 @@ $(document).ready(function(){
 
       $.ajax({
          type : "post",
-         url : "http://39.127.7.64:8080/m.customer/Deleteride",
+         url : "http://39.127.7.90:8080/m.customer/Deleteride",
          // data : {
          //    "truck_code" : truckcode, "email" : email, "out_date" : today
          // },
@@ -112,7 +112,7 @@ $(document).ready(function(){
       //var truck_code = $("#truckcode").val();
       var a = $(this);
       var truck_code = a.next().next().val();
-      location.href = "../truck/info/truckinfo2.html?truck_code="+truck_code;
+      location.href = "../truck/truckinfo2.html?truck_code="+truck_code;
    });
 });
 </script>
