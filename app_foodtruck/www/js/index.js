@@ -31,15 +31,27 @@ var app = {
         //FCM 알림 받았는지 아닌지
         FCMPlugin.onNotification( function(data) {
             if(data.wasUpdated) {
-                console.log("Push Notification tapped " ,data);
+                alert(data);
             }else {
-                console.log("Push Notification". data);
+                alert(JSON.stringify(data));
+                alert(data.body);
             }
         },function (msg) {
             console.log("onNotification callback successfully registered: "+ msg);
         },function(err) {
             console.log("Error registering onNotification callback :  " + err);
         });
+        FCMPlugin.subscribeToTopic('all');
+        window.plugins.sim.getSimInfo(successCallback, errorCallback);
+        function successCallback(result) {
+            telephone=result.phoneNumber;
+            localStorage['phoneNumber']=telephone;
+            FCMPlugin.subscribeToTopic('phone_number-'+telephone);
+            alert(telephone);
+        }
+        function errorCallback(err) {
+            alert(err);
+        }
     },
 
     // Update DOM on a Received Event

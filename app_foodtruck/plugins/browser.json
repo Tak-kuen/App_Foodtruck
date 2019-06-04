@@ -12,6 +12,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.food.project"
+    },
+    "cordova-plugin-sim": {
+      "PACKAGE_NAME": "com.food.project"
     }
   },
   "dependent_plugins": {}

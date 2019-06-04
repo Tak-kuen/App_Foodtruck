@@ -29,8 +29,8 @@
 <body>
 	<div class="wrap">
 	</div>
-	<button id="test">테스트</button>
-	<input type="hidden" id="bfss" value="">
+	<div class="result">
+	</div>
 </body>
 <script>
 
@@ -129,6 +129,34 @@
 					console.log(JSON.stringify(err));
 				}
 			});
+			var pushObj={};
+			pushObj.notification={};
+			pushObj.notification.title="주문이 완료되었습니다!";
+			pushObj.notification.body="맛있게 드시고 리뷰남겨주세요!";
+			pushObj.notification.sound="default";
+			pushObj.to="/topics/phone_number-"+data.payment_telephone;
+			pushObj.priority="high";
+			pushObj.data={};
+			pushObj.data.toLink="review";
+			console.log(pushObj);
+			
+			$.ajax({
+				type:"post",
+				url:"http://39.127.7.90:8080/pushTest2",
+				data:JSON.stringify(pushObj),
+				contentType: "application/json; chartset=UTF-8",
+				success:function(data) {
+					alert("성공적으로 보냈습니다!");
+				},error:function(err) {
+					alert("ajax 연결 실패!");
+					console.log(JSON.stringify(err));
+				}
+			});
+			$('.result').append(parent_node);
+			parent_node.removeClass("payed");
+			parent_node.addClass('ended');
+			$('#'+a).attr('disabled','disabled');
+			parent_node.find('.release').attr('disabled','disabled');
 		} else if (!isChecked) {
 			alert("결제확인을 먼저 하십시오");
 		}
@@ -156,17 +184,12 @@
 						console.log("'" + order + "'");//전화번호
 						var order_index = order_index = orderList[order].length;//한사람당 주문한 제품개수
 						console.log(order_index);
-						$('.wrap').prepend('<div id="list" class="list" style=""><div class="head"><h4>' + orderList[order][0].payment_telephone + '</h4><span class="num">01</span> <span class="">주문시간</span><div style="margin-top: 15%;"><span>경과시간</span></div></div><div id="' + orderList[order][0].payment_telephone + '" class="menu"style="height: 140px; overflow-y: scroll; overflow-x: hidden;"></div><button id="' + order + '"  onclick="pay(\'' + order + '\')" class="pay">결제확인</button><input type="hidden" value="\'' + orderList[order][0].payment_telephone + '\'"><input type="hidden" value="${sessionScope.seller.truck_code }"><button class="release" onclick="release(\'' + order + '\')">출고확인</button></div>');
-						if (order_index > 1) {
-							for (var i = 0; i < order_index; i++) {
-								$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
+						$('.wrap').prepend('<div id="list" class="list" style=""><div class="head"><h4>' + orderList[order][0].payment_telephone + '</h4><span class="num">01</span> <span class="">주문시간</span><div style="margin-top: 15%;"><span>경과시간</span></div></div><div id="' 
+						+ orderList[order][0].payment_telephone + '" class="menu"style="height: 140px; overflow-y: scroll; overflow-x: hidden;"></div><button id="' + order + '"  onclick="pay(\'' + order + '\')" class="pay">결제확인</button><input type="hidden" value="\'' + orderList[order][0].payment_telephone + '\'"><input type="hidden" value="'+localStorage['truck_code']+'"><button class="release" onclick="release(\'' + order + '\')">출고확인</button></div>');
+						for (var i = 0; i < order_index; i++) {
+							$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
 								/* 							$('.menu').append('<span class="orderInfo">'+orderList[order][i].total_price+'</span><br/>');
 															$('.menu').append('<span class="orderInfo">'+orderList[order][i].payment_telephone+'</span><br/>'); */
-							}
-						} else {
-							$('#' + orderList[order][0].payment_telephone + '').append('<p><span>' + orderList[order][i].name + '</span>&nbsp;<span>' + orderList[order][0].amount + '</span>&nbsp;<span>' + orderList[order][i].total_price + '</span><input type="hidden" class="insert_menu_code" value="' + orderList[order][i].menu_code + '"><input type="hidden" class="insert_payment_class" value="' + orderList[order][i].payment_class + '"></p>');
-							/* 						$('.menu').append('<span class="orderInfo">'+orderList[order][0].total_price+'</span><br/>');
-													$('.menu').append('<span class="orderInfo">'+orderList[order][0].payment_telephone+'</span><br/>');	 */
 						}
 						break;
 					}
