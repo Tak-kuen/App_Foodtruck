@@ -28,4 +28,8 @@
     <preference name="fullscreen" value="true" />
     <allow-navigation href="*" />
     <preference name="stay-in-webview" value="true" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="StatusBarDefaultScrollToTop" value="false" />
 </widget>

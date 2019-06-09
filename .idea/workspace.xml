@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="020476b4-e80f-4a63-b78c-98dd3c6903f0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/.gradle/4.8/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/.jshintignore" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/.jshintignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/.jshintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/tests/index.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/android-versions/tests/index.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/.npmignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/README.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/README.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/test/ReadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/test/ReadProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/test/test-cases.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/test/test-cases.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/properties-parser/test/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/LICENSE-MIT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/LICENSE-MIT.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/codepointat.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/codepointat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/node_modules/string.prototype.codepointat/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/cordova.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/cordova.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaResourceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaResourceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebViewImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebViewImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CoreAndroid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/CoreAndroid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/NativeToJsMessageQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/NativeToJsMessageQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemCookieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemCookieManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebChromeClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebChromeClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/cordova-js-src/exec.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/cordova-js-src/exec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/cordova.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/cordova.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/announce/addArea.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/announce/areaspecific.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/announce/modifyArea.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/announce/recruit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/customer/callList.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/customer/callList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/header/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/header/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/login/idSearch.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/login/passSearch.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/login/registerAgree.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/login/registerAgree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/login/registerSuccess.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/main/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/main/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/news/addNews.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/news/modifyNews.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/addMenu.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/afterOrder.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/cuorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/cuorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/editMenu.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/event.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/psgpush.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/seorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/seorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/sideMenuBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/seller/sideMenuBar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/truck/callForm.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/truck/info/truckinfo2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/truck/register/registerForm.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/truck/truckinfo2.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/assets/www/views/truck/truckinfo2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-hdpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-ldpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-mdpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-xhdpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-xhdpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-xxhdpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-xxhdpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-xxxhdpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/mipmap-xxxhdpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/android_sdk_version" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/android_sdk_version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/build" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/build" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/check_reqs" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/check_reqs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/clean" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/clean" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/Adb.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/Adb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/AndroidManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/AndroidManifest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/AndroidProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/AndroidProject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/android_sdk.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/android_sdk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/build.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/build.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/builders/ProjectBuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/builders/ProjectBuilder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/builders/builders.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/builders/builders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/check_reqs.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/check_reqs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/config/GradlePropertiesParser.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/config/GradlePropertiesParser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/device.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/emulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/emulator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/install-device" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/install-device" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/install-emulator" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/install-emulator" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/list-devices" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/list-devices" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/list-emulator-images" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/list-emulator-images" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/list-started-emulators" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/list-started-emulators" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/log.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/plugin-build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/plugin-build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/pluginHandlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/pluginHandlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/prepare.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/prepare.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/retry.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/retry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/run.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/run.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/start-emulator" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/lib/start-emulator" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/log" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/run" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/run" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/version" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/cordova/version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/platform_www/cordova-js-src/exec.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/platform_www/cordova-js-src/exec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/platform_www/cordova.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/platform_www/cordova.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/platform_www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/platform_www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/android/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/android/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/browser.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/browser.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/platform_www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/platform_www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/cordova_plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/cordova_plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/css/seller/order/seorder.css" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/css/seller/order/seorder.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/announce/addArea.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/announce/areaspecific.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/announce/modifyArea.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/announce/recruit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/customer/callList.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/customer/callList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/header/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/header/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/login/idSearch.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/login/passSearch.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/login/registerAgree.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/login/registerAgree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/login/registerSuccess.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/main/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/main/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/news/addNews.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/news/modifyNews.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/addMenu.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/afterOrder.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/cuorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/cuorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/editMenu.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/event.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/psgpush.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/seorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/seorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/sideMenuBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/seller/sideMenuBar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/truck/callForm.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/truck/info/truckinfo2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/truck/register/registerForm.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/truck/truckinfo2.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/platforms/browser/www/views/truck/truckinfo2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/plugins/android.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/plugins/android.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/plugins/browser.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/plugins/browser.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/plugins/fetch.json" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/plugins/fetch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/announce/addArea.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/announce/areaspecific.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/announce/modifyArea.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/announce/recruit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/customer/callList.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/customer/callList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/header/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/header/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/login/idSearch.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/login/passSearch.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/login/registerAgree.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/login/registerAgree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/login/registerSuccess.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/main/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/main/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/news/addNews.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/news/modifyNews.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/addMenu.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/afterOrder.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/cuorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/seller/cuorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/editMenu.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/event.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/psgpush.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/seorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/seller/seorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/seller/sideMenuBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/seller/sideMenuBar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/truck/callForm.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/truck/info/truckinfo2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/truck/register/registerForm.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_foodtruck/www/views/truck/truckinfo2.html" beforeDir="false" afterPath="$PROJECT_DIR$/app_foodtruck/www/views/truck/truckinfo2.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1576642252">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.10" value="3" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="110" />
+    <option name="y" value="24" />
+    <option name="width" value="1560" />
+    <option name="height" value="1001" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="020476b4-e80f-4a63-b78c-98dd3c6903f0" name="Default Changelist" comment="" />
+      <created>1559658165652</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1559658165652</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="110" y="24" width="1560" height="1001" extended-state="0" />
+    <layout>
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25886992" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="TODO" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Theme Preview" order="1" />
+      <window_info anchor="right" id="Palette&#9;" order="2" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

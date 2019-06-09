@@ -31,15 +31,58 @@ var app = {
         //FCM 알림 받았는지 아닌지
         FCMPlugin.onNotification( function(data) {
             if(data.wasUpdated) {
-                console.log("Push Notification tapped " ,data);
+                //alert(data);
             }else {
-                console.log("Push Notification". data);
+                //alert(JSON.stringify(data));
+                alert(data.body);
             }
         },function (msg) {
             console.log("onNotification callback successfully registered: "+ msg);
         },function(err) {
             console.log("Error registering onNotification callback :  " + err);
         });
+        FCMPlugin.subscribeToTopic('all');
+        //window.plugins.sim.getSimInfo(successCallback, errorCallback);
+        function successCallback(result) {
+            //alert(JSON.stringify(result));
+            telephone=result.phoneNumber;
+            if(result.mnc =="05") {
+                telephone=telephone.substr(3);
+            }else if(result.mnc =="08") {
+                telephone=telephone.substr(5);
+            }
+            localStorage['phoneNumber']=telephone;
+            FCMPlugin.subscribeToTopic('phone_number-'+telephone);
+            //alert(telephone);
+        }
+        function errorCallback(err) {
+            alert("실패");
+            FCMPlugin.subscribeToTopic('for_presentation');
+            alert(err);
+        }
+        hasReadPermission();
+        requestReadPermission();
+        function hasReadPermission() {
+            window.plugins.sim.hasReadPermission(function(data){
+                //alert("권한 갖고있음?");
+            }, errorCallback);
+            
+        }
+        // request permission
+        function requestReadPermission() {
+            window.plugins.sim.requestReadPermission(function(result) {
+                //alert("권한 요청");
+            }, errorCallback);
+            window.plugins.sim.getSimInfo(successCallback, errorCallback);
+        }
+        StatusBar.overlaysWebView(true);
+        StatusBar.styleDefault();
+        StatusBar.show();
+        window.addEventListener('statusTap', function() {
+            // scroll-up with document.body.scrollTop = 0; or do whatever you want
+            document.body.scrollTop = 0;
+        });
+      
     },
 
     // Update DOM on a Received Event

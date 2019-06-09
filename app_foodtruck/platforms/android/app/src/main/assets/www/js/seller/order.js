@@ -39,11 +39,12 @@ $(document).ready(function () {
 			console.log(typeof json);
 			var foodlist = $('#foodlist');
 			for (var menu in json) {
+				console.log(json[menu]);
 				var food = $('<div></div>').addClass('foods').appendTo(foodlist)
 				var button = $('<button></button>').addClass('btn food').appendTo(food);
-				var img_rul = json[menu].menu_surl;
-				img_url = img_rul.replace(/\\/gi, '/');
-				img_url = "../../image/upload/" + img_url;
+				var img_url = json[menu].menu_surl;
+				img_url = img_url.replace(/\\/gi, '/');
+				img_url = "http://39.127.7.90:8080/resources/img/upload/" + img_url;
 				console.log(img_url);
 				$('<img>').addClass("btn foodImg").attr('src', img_url).appendTo(button);
 				$('<p></p>').text(json[menu].menu_name).appendTo(food);

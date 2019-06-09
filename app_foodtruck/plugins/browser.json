@@ -7,13 +7,22 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "com.food.project"
-    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.food.project"
     },
     "cordova-plugin-sim": {
+      "PACKAGE_NAME": "com.food.project"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "com.food.project"
+    },
+    "cordova-plugin-qrscanner": {
+      "PACKAGE_NAME": "com.food.project"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.food.project"
+    },
+    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.food.project"
     }
   },

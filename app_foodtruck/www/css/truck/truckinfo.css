@@ -83,15 +83,6 @@ h1 {
 	width: 1000px;
 }
 
-#btn1, #btn2, #btn3, #btn4, #btn5 {
-	/* width: 150px;
-	height: 50px;
-	text-align: center;
-	display: inline-block;
-	border: 1px solid darkgray;
-	margin-left: 20px;
-	margin-right: 20px; */
-}
 
 #creatbtn, #creatbtncancle {
 	margin-top: 5px;
@@ -193,7 +184,6 @@ h1 {
 	width: 550px;
 	height: 385px;
 	float: left;
-	"
 }
 
 #ride, #call {
@@ -222,9 +212,6 @@ h1 {
 	border-radius: 10px;
 }
 
-.img {
-	/* width: 200px !important; */
-}
 
 .row {
 	text-align: center;
@@ -307,7 +294,7 @@ h1 {
 .star_rating {
 	font-size: 0;
 	letter-spacing: -4px;
-	widht: 60px;
+	width: 60px;
 }
 
 .star_rating a {
@@ -363,14 +350,14 @@ h1 {
 	margin-top: 50px;
 	text-align: left;
 	width: 100%;
-	hegiht: 150px;
+	height: 150px;
 }
 
 .contentmodify{
 	margin-top: 50px;
 	text-align: left;
 	width: 100%;
-	hegiht: 150px;
+	height: 150px;
 } 
 
 #star {

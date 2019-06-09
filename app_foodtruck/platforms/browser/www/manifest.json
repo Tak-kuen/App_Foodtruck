@@ -8,5 +8,6 @@
   "author": "Apache Cordova Team",
   "icons": [],
   "orientation": "portrait",
-  "start_url": "/views/main/main.html"
+  "start_url": "/views/main/main.html",
+  "theme_color": "#000000"
 }
