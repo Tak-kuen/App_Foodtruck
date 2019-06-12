@@ -4,26 +4,31 @@
 	height: 220px;
 	margin: 0 auto;
 	margin-top: 2px;
-	background-color: rgb(255, 117, 57);
+	background-color: rgb(255, 148, 102);
+}
+#container3 h5 {
+	margin-top: 20px;
 }
 
 #container2 {
 	width: 32%;
 	height: 270px;
 	margin: 0 auto;
-	background-color: rgb(255, 117, 57);
+	background-color: rgb(255, 148, 102);
 }
-
-#title {
-	margin-top: 200px;
-	margin: 0 auto;
-	width: 1200px;
-}
-
-#title2 {
+#container2 h5 {
 	margin-top: 20px;
-	margin:0 auto;
-	width: 1200px;
+}
+#title{
+	width: 925px;
+	height: 300px;
+	margin-bottom: 20px;
+	margin-top:30px;
+}
+#title2{
+	width: 850px;
+	height: 200px;
+	margin-top: 10px;
 }
 
 .snip1535 {
@@ -89,27 +94,15 @@
 	padding-top: 30px;
 }
 .img2{
-	
 	margin: 0 auto;
 	margin-top: 15px;
-	width:50%; 
-	height: 180px;
+	width:60%; 
+	height: 100px;
 }
 .img1{
 	margin-top: 15px;
 	width:50%; 
-	height: 200px;
-}
-#title{
-	width: 925px;
-	height: 300px;
-	margin: 0 auto;
-	margin-top: 200px;
-}
-#title2{
-	width: 850px;
-	height: 200px;
-	margin: 0 auto;
+	height: 100px;
 }
 
 .carousel-item {
@@ -130,4 +123,7 @@ h4{
 	text-align: center;
 	margin-top: 5px;
 	width: 150;
+}
+table {
+	font-size: 0.7rem;
 }

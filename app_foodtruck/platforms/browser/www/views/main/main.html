@@ -2,190 +2,168 @@
 <html>
 
 <head>
-	<!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline' https:; script-src https: 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: http:"> -->
-	<meta name="format-detection" content="telephone=no">
-	<meta name="msapplication-tap-highlight" content="no">
-	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-	<link rel="stylesheet" href="../../css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../css/general.css">
-	<script type="text/javascript" src="../../cordova.js"></script>
-	<script type="text/javascript" src="../../js/index.js"></script>
-	<script type="text/javascript" src="../../js/jquery.min.js"></script>
-	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../js/jquery.ajax-cross-origin.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			var init = function () {
-				$('#navbar').load("../header/header.html");
-			}
-			init();
-			$('#toApp').hide();
-			$('#toQRScanner').click(function () {
-				QRScanner.prepare(onDone); // show the prompt
-				function displayContents(err, text) {
-					if (err) {
-						// an error occurred, or the scan was canceled (error code `6`)
-					} else {
-						// The scan completed, display the contents of the QR code:
-						alert(text);
-						QRScanner.destroy();
-						$('.normal').removeClass('QR_transparent');
-						$('body').show();
-					}
-				}
-				function onDone(err, status) {
-					if (err) {
-						alert(JSON.stringify(err));
-						console.error(err);
-					}
-					if (status.authorized) {
-						// W00t, you have camera access and the scanner is initialized.
-						// QRscanner.show() should feel very fast.
-						// Start a scan. Scanning will continue until something is detected or
-						// `QRScanner.cancelScan()` is called.
-						QRScanner.scan(displayContents);
-						// Make the webview transparent so the video preview is visible behind it.
-						$('.normal').addClass('QR_transparent');
-						$('body').hide();
+   <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline' https:; script-src https: 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: http:"> -->
+   <meta name="format-detection" content="telephone=no">
+   <meta name="msapplication-tap-highlight" content="no">
+   <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+   <link rel="stylesheet" href="../../css/bootstrap.min.css">
+   <link rel="stylesheet" href="../../css/main.css">
+   <link rel="stylesheet" href="../../css/general.css">
+   <script type="text/javascript" src="../../cordova.js"></script>
+   <script type="text/javascript" src="../../js/index.js"></script>
+   <script type="text/javascript" src="../../js/jquery.min.js"></script>
+   <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="../../js/jquery.ajax-cross-origin.min.js"></script>
+   <script>
+      $(document).ready(function () {
+         var init = function () {
+            $('#navbar').load("../header/header.html");
+         }
+         init();
+         $.ajax({
+            type:"post",
+            url:"http://39.127.7.90:8080/m",
+            dataType:'json',
+            success:function(data) {
+               alert(JSON.stringify(data));
+               for(var i=0; i<data.length;i++) {
+                  var parent_node = $('.carousel-inner').css({'margin-top':'-28.5%'});
+                  if(data[i].rank==1) {
+                     var paths = 'url(http://39.127.7.90:8080/resources/image/upload/'+data[i].truck_url+') no-repeat center center scroll';
+                     var active_item = $('<div></div>').addClass('carousel-item active').css({'background':paths});
+                     var d_md_block = $('<div></div>').addClass('carousel-caption d-md-block');
+                     var display_4 = $('<h6></h6>').addClass('display-4')
+                     .html('<br>월간맛트럭<br>영예의1위!<br>'+data[i].brandname+'')
+                     .appendTo(d_md_block);
+                     $('<input>').attr('type','hidden').val(data[i].truck_code).appendTo(d_md_block);
+                     d_md_block.appendTo(active_item);
+                     active_item.appendTo(parent_node);
+                  }else {
+                     var paths = 'url(http://39.127.7.90:8080/resources/image/upload/'+data[i].truck_url+') no-repeat center center scroll';
+                     var active_item = $('<div></div>').addClass('carousel-item').css({'background':paths});
+                     var d_md_block = $('<div></div>').addClass('carousel-caption d-md-block');
+                     var display_4 = $('<h6></h6>').addClass('display-4')
+                     .html(data[i].brandname)
+                     .appendTo(d_md_block);
+                     $('<input>').attr('type','hidden').val(data[i].truck_code).appendTo(d_md_block);
+                     d_md_block.appendTo(active_item);
+                     active_item.appendTo(parent_node);
+                  }
+               }
+            },error:function(err) {
+               alert(JSON.stringify(err));
+            }
+         });
 
-						QRScanner.show();
+         $('#toApp').hide();
+         $('#toQRScanner').click(function () {
+            QRScanner.prepare(onDone); // show the prompt
+            function displayContents(err, text) {
+               if (err) {
+                  // an error occurred, or the scan was canceled (error code `6`)
+               } else {
+                  // The scan completed, display the contents of the QR code:
+                  alert(text);
+                  var queryStringArr = text.split("?");
+                  var isTruck_code=queryStringArr[1].includes('truck_code');
+                  var emailFind=queryStringArr[1].indexOf("email");
+                  var email=queryStringArr[1].substring(emailFind);
+                  if(isTruck_code) {
+                     location.href="../seller/cuorder.html?"+email;
+                  }
+                  QRScanner.destroy();
+                  $('.normal').removeClass('QR_transparent');
+                  $('body').show();
+               }
+            }
+            function onDone(err, status) {
+               if (err) {
+                  alert(JSON.stringify(err));
+                  console.error(err);
+               }
+               if (status.authorized) {
+                  // W00t, you have camera access and the scanner is initialized.
+                  // QRscanner.show() should feel very fast.
+                  // Start a scan. Scanning will continue until something is detected or
+                  // `QRScanner.cancelScan()` is called.
+                  QRScanner.scan(displayContents);
+                  // Make the webview transparent so the video preview is visible behind it.
+                  $('.normal').addClass('QR_transparent');
+                  $('body').hide();
 
-						// Be sure to make any opaque HTML elements transparent here to avoid
-						// covering the video.
-					} else if (status.denied) {
-						// The video preview will remain black, and scanning is disabled. We can
-						// try to ask the user to change their mind, but we'll have to send them
-						// to their device settings with `QRScanner.openSettings()`.
-					} else {
-						// we didn't get permission, but we didn't get permanently denied. (On
-						// Android, a denial isn't permanent unless the user checks the "Don't
-						// ask again" box.) We can ask again at the next relevant opportunity.
-					}
-				}
-			});
-		});
-	</script>
-	<style>
-		#toQRScanner {
-			position: fixed;
-			width: 50px;
-			height: 50px;
-			background-color: rgb(255, 94, 24);
-			bottom: 20px;
-			right: 20px;
-		}
+                  QRScanner.show();
 
-		#toQRScanner img {
-			width: 100%;
-			height: 100%;
-		}
+                  // Be sure to make any opaque HTML elements transparent here to avoid
+                  // covering the video.
+               } else if (status.denied) {
+                  // The video preview will remain black, and scanning is disabled. We can
+                  // try to ask the user to change their mind, but we'll have to send them
+                  // to their device settings with `QRScanner.openSettings()`.
+               } else {
+                  // we didn't get permission, but we didn't get permanently denied. (On
+                  // Android, a denial isn't permanent unless the user checks the "Don't
+                  // ask again" box.) We can ask again at the next relevant opportunity.
+               }
+            }
+         });
+      });
+   </script>
 
-		#toApp {
-			position: fixed;
-			width: 50px;
-			height: 50px;
-			background-color: rgb(255, 94, 24);
-			bottom: 20px;
-			right: 20px;
-		}
-
-		#toApp img {
-			width: 100%;
-			height: 100%;
-		}
-
-		.QR_transparent {
-			background-color: transparent;
-		}
-	</style>
 </head>
 
 <body>
-	<div class="normal">
-		<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-		</nav>
-		<header>
-			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-				</ol>
-				<div class="carousel-inner" role="listbox">
-					<!-- Slide One - Set the background image for this slide in the line below -->
-					<div class="carousel-item active" style="background-image: url('../../image/food1.png')">
-						<div class="carousel-caption d-none d-md-block">
-							<h3 class="display-4">닭치고 닭꼬치</h3>
-							<!-- <p class="lead">닭치고 닭꼬치</p> -->
-						</div>
-					</div>
+    <div class="normal">
+      <div id="navbar">
+	  </div> 
+      <header>
+         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+         
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+            </a>
+         </div>
+      </header>
+      <!-- 중앙 -->
+      <div>
+         <nav class="navbar navbar-light bg-light" id="story">
+            <a class="navbar-brand" href="#">더 많은 이야기</a>
+         </nav>
+         <div class="card-deck">
+            <div class="card">
+               <a href="/project/eventOn"><img class="card-img-top" src="../../image/event.jpg"
+                     alt="Card image cap"></a>
+               <div class="card-body">
+                  <h4 class="card-title">이벤트</h4>
+                  <p class="card-text">각 푸드트럭에서 실시하는 이벤트를 알아보세요.</p>
 
-
-					<!-- Slide Two - Set the background image for this slide in the line below -->
-					<div class="carousel-item" style="background-image: url('../../image/food2.jpg')">
-						<div class="carousel-caption d-none d-md-block">
-							<h3 class="display-4">타코 트럭</h3>
-							<!-- <p class="lead">오니기리</p> -->
-						</div>
-					</div>
-					<!-- Slide Three - Set the background image for this slide in the line below -->
-					<div class="carousel-item" style="background-image: url('../../image/food3.jpg')">
-						<div class="carousel-caption d-none d-md-block">
-							<h3 class="display-4">커피 트럭</h3>
-							<!-- <p class="lead">김밥천국</p> -->
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</header>
-		<div>
-			<div style="display: inline">
-				<!-- <button style="width:50%; float: right" type="button" class="btn btn-outline-secondary">주간 맛트럭</button> -->
-				<button style="width: 50%; float: right" type="button" class="btn btn-warning">주간 맛트럭</button>
-			</div>
-			<div style="display: inline;">
-				<!-- <button style="width:50%" type="button" class="btn btn-outline-secondary">월간 맛트럭</button> -->
-				<button style="width: 50%" type="button" class="btn btn-warning">월간 맛트럭</button>
-			</div>
-		</div>
-
-		<!-- 중앙 -->
-		<div style="margin-left: 100px; margin-right: 100px;">
-			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="#">더 많은 이야기</a>
-			</nav>
-			<div class="card-deck">
-				<div class="card">
-					<a href="/project/eventOn"><img class="card-img-top" src="../../image/event.jpg"
-							alt="Card image cap"></a>
-					<div class="card-body">
-						<h4 class="card-title">이벤트</h4>
-						<p class="card-text">각 푸드트럭에서 실시하는 이벤트를 알아보세요.</p>
-
-					</div>
-				</div>
-				<div class="card">
-					<a href="/project/news""><img class=" card-img-top" src="../../image/news.png"
-						alt="Card image cap"></a>
-					<div class="card-body">
-						<h4 class="card-title">푸드트럭 News</h4>
-						<p class="card-text">당신의 푸드트럭의 새로운 소식을 알아보세요.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="toQRScanner">
-		<img src="../../image/트럭사진.png">
-	</div>
+               </div>
+            </div>
+            <div class="card">
+               <a href="/project/news"><img class=" card-img-top" src="../../image/news.png"
+                  alt="Card image cap"></a>
+               <div class="card-body">
+                  <h4 class="card-title">푸드트럭 News</h4>
+                  <p class="card-text">당신의 푸드트럭의 새로운 소식을 알아보세요.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   
 </body>
 
 </html>

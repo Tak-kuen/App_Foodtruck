@@ -1,21 +1,7 @@
-.carousel-item {
-    height: 65vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-#top-right {
-    text-align: right;
-}
-
-#top-right {
-    margin-top: 50px;
-    margin-left: 26%;
-}
-#top-right a{
-    color: rgb(255, 94, 24)!important;
+#navbar{
+   margin-left:20%;
+   margin-right:20%;
+    font-family: 'yg-jalnan';
+   font-size: 120%;
+   font-weight: 700;
 }

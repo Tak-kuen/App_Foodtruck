@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- <meta http-equiv="Content-Security-Policy"
+		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/general.css">
+	<link rel="stylesheet" href="../../css/seller/call/callmanage.css" />
+	<link rel="stylesheet" href="../../css/seller/sideMenuBar.css">
+	<!-- <script type="text/javascript" src="../../js/seller/sellerMain.js"></script> -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="../../cordova.js"></script>
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div id="navbar">
+	</div>
+	<div class="container">
+		<div id="sideMenuBar" class="col-md-3">
+		</div>
+		<div class="col-md-9">
+			<div class="col-md-12 paddingZero">
+				<div class="menuTitle">호출관리</div>
+			</div>
+			<div class="calltext" style="overflow-x: hidden; overflow-y: auto;">
+				<table>
+					<!-- #wrapper에 스타일 지정 -->
+					<thead>
+						<tr>
+							<th id="col_1">요청정보</th>
+							<!-- #col_1에 스타일 지정 -->
+							<th id="col_1">신청자정보</th>
+							<!-- #col_2에 스타일 지정 -->
+							<th id="col_1">진행상태</th>
+							<!-- #col_3에 스타일 지정 -->
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+			var init = function () {
+				$('#navbar').load("../header/header.html");
+				$('#sideMenuBar').load("sideMenuBar.html");
+			}
+			init();
+			$.ajax({
+				type:"post",
+				url:"http://39.127.7.90:8080/m.seller/callmanage",
+				data:JSON.stringify({
+					truck_code:localStorage['truck_code'],
+				}),
+				contentType: "application/json; chartset=UTF-8",
+				success:function(data) {
+					console.log(typeof data);
+					console.log(data);
+					var json = JSON.parse(data);
+					parent_node = $('tbody');
+					parent_node.html("");
+					if(json.result=="empty") {
+					//결과가 없을때
+					}else {
+						for(var i=0;i<json.length;i++) {
+							var _tr = $('<tr></tr>');
+							var _td = $('<td></td>');
+							$('<input>').attr('type','hidden').val(json[i].MERCHANT_UID).appendTo(_td);
+							_td.html('행사일 : '+ json[i].FESTIVAL_STARTDATE + "~"+ json[i].FESTIVAL_ENDDATE+"<br/>"
+							+"행사시간 : " + json[i].FESTIVAL_STARTTIME + "~" + json[i].FESTIVAL_ENDTIME+"<br/>"
+							+"행사장소 : " + json[i].PLACE +"<br/>섭외비용 : <span>" + json[i].PRICE + "</span> 원<br/>"
+							+"요구사항 : " + json[i].CONTENT+"<br/>").appendTo(_tr);
+							$('<td></td>').html("신청자명 : " + json[i].NAME +"<br/>전화번호 : " + json[i].CALLTEL).appendTo(_tr);
+							var _td2=$('<td></td>');
+							if(json[i].PAY_STATUS ==1) {
+								_td2.html("결제 : 완료<br/>").appendTo(_tr);
+							}else if(json[i].PAY_STATUS ==2) {
+								_td2.html("결제 : 진행중<br/>").appendTo(_tr);
+							}else if(json[i].PAY_STATUS ==3) {
+								_td2.html("결제 : 취소<br/>").appendTo(_tr);
+							}
+							if(json[i].PROGRESS ==1) {
+								var statusTxt = _td2.html();
+								statusTxt = statusTxt+"상태 : 진행중<br/>";
+								_td2.html(statusTxt);
+								$('<button></button>').addClass('agree').text('승인').appendTo(_td2);
+								$('<button></button>').addClass('cancel1').text('취소').appendTo(_td2);
+							}else if(json[i].PROGRESS ==2) {
+								var statusTxt = _td2.html();
+								statusTxt = statusTxt+"상태 : 진행중<br/>";
+								_td2.html(statusTxt);
+								$('<button></button>').addClass('confirm2').text('확인').appendTo(_td2);
+								$('<button></button>').addClass('cancel2').text('취소').appendTo(_td2);
+							}else if(json[i].PROGRESS ==3) {
+								var statusTxt = _td2.html();
+								statusTxt = statusTxt+"상태 : 행사측 확인완료<br/>";
+								_td2.html(statusTxt);
+								$('<button></button>').addClass('confirm3').text('확인').appendTo(_td2);
+								$('<button></button>').addClass('cancel3').text('취소').appendTo(_td2);
+							}else if(json[i].PROGRESS ==4) {
+								var statusTxt = _td2.html();
+								statusTxt = statusTxt+"상태 : 행사측 미확인<br/>";
+								_td2.html(statusTxt);
+								$('<button></button>').addClass('confirm3').text('확인').appendTo(_td2);
+								$('<button></button>').addClass('cancel3').text('취소').appendTo(_td2);
+							}else if(json[i].PROGRESS ==5) {
+								var statusTxt = _td2.html();
+								statusTxt = statusTxt+"상태 : 거래종료<br/>";
+								_td2.html(statusTxt);
+							}else if(json[i].PROGRESS ==6) {
+								var statusTxt = _td2.html();
+								statusTxt = statusTxt+"상태 : 취소<br/>";
+								_td2.html(statusTxt);
+							}else if(json[i].PROGRESS ==7) {
+								var statusTxt = _td2.html();
+								statusTxt = statusTxt+"취소신청을 하셨습니다.<br/>";
+								_td2.html(statusTxt);
+							}
+							_td2.appendTo(_tr);
+							_tr.appendTo(parent_node);
+						}
+					}
+				},
+				error:function(err) {
+					alert(JSON.stringify(err));
+				}
+
+
+			});
+		});
+	</script>
+</body>

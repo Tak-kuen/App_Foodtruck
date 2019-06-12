@@ -3,10 +3,9 @@
 
 #with {
 	margin: 0 auto;
-	margin-top: 150px;
+	margin-top: 2px;
 	width: 1200px;
 	height: 600px;
-	border: 1px solid darkgray;
 	overflow-y:auto;
 }
 	
@@ -21,4 +20,7 @@
 h1{
 	text-align:center; 
 	margin-top:10px;
+}
+table {
+	font-size:0.55rem;
 }

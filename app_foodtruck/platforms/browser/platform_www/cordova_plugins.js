@@ -52,8 +52,7 @@ module.exports.metadata =
     "cordova-plugin-sim": "1.3.3",
     "cordova-plugin-fcm-with-dependecy-updated": "2.4.0",
     "cordova-plugin-qrscanner": "3.0.1",
-    "cordova-plugin-statusbar": "2.4.2",
-    "cordova-plugin-geolocation": "4.0.1"
+    "cordova-plugin-statusbar": "2.4.2"
 }
 // BOTTOM OF METADATA
 });

@@ -1,15 +1,17 @@
-@charset "UTF-8";
+/* @charset "UTF-8";
 
 #with {
    margin: 0 auto;
-   margin-top: 100px;
-   padding: 0 !important;
-
+   margin-top: 150px;
+   width: 1200px;
+   height: 850px;
+   border: 1px solid darkgray;
 }
 #height{
    margin: 0 auto;
-   padding: 0 !important;
-
+   width: 1000px;
+   height: 750px;
+   border: 1px solid darkgray;
 }
 h1, h3{
    text-align: center;
@@ -18,42 +20,61 @@ h1, h3{
    margin: 0 auto;
    width: 280px;
    height: 600px;
-   padding: 0 !important;
+
+   float: left;
+   text-align: left;
 }
 #sj{
    margin: 0 auto;
    width: 450px;
    height: 800px;
+
+   float: left;
    text-align: center;
 }
 #name{
    margin-top: 25px;
 }
 input{
-   margin-top: 15px;
+   margin-top: 30px;
 }
 h4{
-   margin-top: 15px;
+   margin-top: 30px;
 }
 input{
    text-align: center;
-   z-index: 101;
+}
+#oj{
+
+   margin-top: 600px;
+   width: 200px;
+   float:left;
+   text-align: center;
 }
 #festivalname{
-   margin-top: 15px;
-   /* margin-bottom: 50px; */
+   margin-top: 40px;
+   margin-bottom: 50px;
 }
 #place{
-   margin-top: 15px;
+   margin-top: 40px;
+   margin-bottom: 90px;
+}
+#truckcost{
+   margin-bottom: 80px;
 }
 #date{
    margin-top: 10px;
 }
+#time{
+    margin-bottom: 70px; 
+    margin-top:40px;
+}
+
+#content{
+   margin-top: 60px;
+}
 #btn1{
    width: 150px;
-   margin: 0 auto;
-   margin-top: 15px;
-   margin-left: 65px;
 }
 #btn2{
    width: 150px; 
@@ -64,7 +85,7 @@ input{
 }
 textarea{
    width: 100%; 
-   /* margin-top: 20px; */
+   margin-top: 20px;
 }
 #inname{
    margin-top: 20px; 
@@ -99,7 +120,145 @@ textarea{
    width: 100%;
 }
 #div1{
+   margin-top: -25px;
+   padding: 0 !important;
+}
+#div2{
+   margin-top: -25px;
+   padding: 0 !important;
+}
+#div3{
+   padding: 0 !important;
+}
+#pop{
+    width:400px; height:250px; background:white; 
+    position:absolute; top: 100px; left:300px; text-align:center; 
+    border:2px solid #000;
+   }
+#radio{
+   margin: 0 auto;
+   text-align: left;
+}
+#gg{
+   margin: 0 auto;
+   margin-left: 20px;
+   width:350px; 
+   height:200px;
+   
+}
+#ff{
+   
+   margin-top: 50px;
+   text-align: center;
+   
+}
+#oo{
+   margin: 0 auto;
+   margin-top:10px;
+   margin-left: 5px;
+   border: 1px solid darkgray;
+} */
+@charset "UTF-8";
 
+#with {
+   /* margin: 0 auto; */
+   margin-top: 100px;
+   padding: 0 !important;
+
+}
+#height{
+   /* margin: 0 auto; */
+   padding: 0 !important;
+
+}
+h1, h3{
+   text-align: center;
+}
+#sg{
+   /* margin: 0 auto; */
+   width: 280px;
+   height: 600px;
+   padding: 0 !important;
+}
+#sj{
+   /* margin: 0 auto; */
+   width: 450px;
+   height: 800px;
+   text-align: center;
+}
+#name{
+   margin-top: 25px;
+}
+input{
+   margin-top: 15px;
+}
+h4{
+   margin-top: 15px;
+}
+input{
+   text-align: center;
+   z-index: 101;
+}
+
+#festivalname{
+   margin-top: 15px;
+   /* margin-bottom: 50px; */
+}
+#place{
+   margin-top: 15px;
+}
+
+#date{
+   margin-top: 10px;
+}
+
+
+#btn1{
+   width: 150px;
+   margin: 0 auto;
+   margin-top: 15px;
+   margin-left: 65px;
+}
+#btn2{
+   width: 150px; 
+   margin-top: 15px;
+}
+#btn3{
+   width: 150px;
+}
+textarea{
+   width: 100%; 
+   /* margin-top: 20px; */
+}
+#inname{
+   display: inline;
+}
+#intel{
+
+   display: inline;
+}
+#inplace{
+   
+   display: inline;
+}
+#Startdate, #Enddate{
+ 
+   display: inline;
+}
+#Starttime, #Endtime{
+   
+   display: inline;
+}
+#postnum{
+   display: inline;
+}
+#loadaddr{
+   top: 5px;
+}
+#cost{
+   width: 100%;
+}
+#div1{
    padding: 0 !important;
 }
 #div2{
@@ -117,11 +276,11 @@ textarea{
    z-index: 1;
    }
 #radio{
-   margin: 0 auto;
+   /* margin: 0 auto; */
    text-align: left;
 }
 #gg{
-   margin: 0 auto;
+   /* margin: 0 auto; */
    /* margin-left: 20px; */
    width:350px; 
    height:200px;
@@ -134,8 +293,21 @@ textarea{
    
 }
 #oo{
-   margin: 0 auto;
+   /* margin: 0 auto; */
    margin-top:10px;
    margin-left: 5px;
    border: 1px solid darkgray;
+}
+iframe { 
+   /* overflow-y:hidden; */
+   /* overflow:hidden; */
+   
+   width: 180%;
+       height: 80vh;
+       transform: scale(0.71, 0.71);
+   -moz-transform-origin: top left;  
+   -webkit-transform-origin: top left; 
+   -o-transform-origin: top left; 
+   -ms-transform-origin: top left; 
+   transform-origin: top left; 
 }

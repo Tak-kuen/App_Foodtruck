@@ -34,8 +34,8 @@
 </head>
 
 <body>
-	<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-	</nav>
+	<div id="navbar">
+	</div>
 	<div class="container">
 		<div class="row">
 			<div id="sideMenuBar" class="col-md-3">
@@ -53,21 +53,17 @@
 	</div>
 	<script>
 		var locationVO = {};
-		$(document).on('deviceready', function () {
-			StatusBar.overlaysWebView(true);
-			StatusBar.styleDefault();
-			StatusBar.show();
-
-			var geo_id = navigator.geolocation.getCurrentPosition(function (position) {
-				locationVO.lat_y = position.coords.latitude + "";
-				locationVO.lng_x = position.coords.longitude + "";
-				locationVO.truck_code = localStorage['truck_code'];
-				alert(JSON.stringify(locationVO));
-			}, function (err) {
-				alert("[" + err.code + "]" + err.message);
-			});
-
-		});
+		// $(document).on('deviceready',onDeviceReady);
+		// function onDeviceReady() {
+		// 	var geo_id = navigator.geolocation.getCurrentPosition(function (position) {
+		// 		locationVO.lat_y = position.coords.latitude + "";
+		// 		locationVO.lng_x = position.coords.longitude + "";
+		// 		locationVO.truck_code = localStorage['truck_code'];
+		// 		alert(JSON.stringify(locationVO));
+		// 	}, function (err) {
+		// 		alert("[" + err.code + "]" + err.message);
+		// 	},{maximumAge:60000, timeout:30000,enableHighAccuracy:true});
+		// }
 		$(document).ready(function () {
 			var init = function () {
 				$('#navbar').load("../header/header.html");
@@ -75,6 +71,19 @@
 				$('#sideMenuBar').load("sideMenuBar.html");
 			}
 			init();
+			if (navigator.geolocation) {
+           		navigator.geolocation.getCurrentPosition(function(position) {
+					alert(JSON.stringify(position));
+                	locationVO.lat_y = position.coords.latitude + "";
+					locationVO.lng_x = position.coords.longitude + "";
+					locationVO.truck_code = localStorage['truck_code'];
+					alert(JSON.stringify(locationVO));
+            	}, function(error) {
+            		alert('Error occurred. Error code: ' + error.code);         
+            	},{timeout:10000});
+        	}else{
+            	alert('no geolocation support');
+        	}
 			$('#seorder').click(function(){
 				$.ajax({
 					type: "post",
@@ -83,6 +92,7 @@
 					contentType: "application/json; chartset=UTF-8",
 					success:function(data) {
 						alert("성공");
+						location.href="../seller/seorder.html";
 					},error:function(err) {
 						alert(JSON.stringify(err));
 					}

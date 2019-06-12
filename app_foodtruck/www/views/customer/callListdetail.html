@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">   
+<title>당신의 푸드트럭</title>
+<link rel="stylesheet" href="../../css/customercss/callListdetail.css"/>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/general.css">
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script src="../../js/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    var init=function() {
+         $('#navbar').load("../header/header.html");
+      }
+      init();
+    function getQuerystring(paramName){  //html 파라미터 넘어오는거 값 받을수있음
+      var _tempUrl = window.location.search.substring(1); //url에서 처음부터 '?'까지 삭제 
+      var _tempArray = _tempUrl.split('&'); // '&'을 기준으로 분리하기 
+      for(var i = 0; _tempArray.length; i++) { 
+         var _keyValuePair = _tempArray[i].split('='); // '=' 을 기준으로 분리하기 
+         if(_keyValuePair[0] == paramName){ // _keyValuePair[0] : 파라미터 명 // _keyValuePair[1] : 파라미터 값
+          return _keyValuePair[1]; 
+          } 
+      } 
+   }
+    var merchant_uid = getQuerystring('merchant_uid');
+    var query = {
+        merchant_uid : merchant_uid
+    }
+    $.ajax({
+        type:"post",
+        url:"http://39.127.7.64:8080/m.customer/detail",
+        contentType:"application/json; charset=UTF-8",
+        data : JSON.stringify(query),
+         success:function(data){
+        // alert(data);
+        console.log(data);
+        //console.log(JSON.parse(data));
+        var a = data;
+        var place = a[0].place;
+      var brandname = a[0].brandname;
+        var festival_name = a[0].festival_name
+            
+        var progress;
+      var agreement;
+      var pay_status;
+
+        if(a[0].progress ==1){
+         progress="<h5>진행 상태 : 진행중<button class='cancel1'>취소</button></h5>";
+         agreement="대기";
+      }else if(a[0].progress ==2){
+         progress="<h5>진행 상태 : 진행중<button class='confirm2'>확인</button><button class='cancel2'>취소</button></h5>";
+         agreement="승인";
+      }else if(a[0].progress ==3){
+         progress="<h5>진행 상태 : 트럭 미확인<button class='cancel3'>취소</button></h5>";   
+         agreement="승인";
+      }else if(a[0].progress ==4){
+         progress="<h5>진행 상태 : 트럭 확인<button class='confirm4'>확인</button></h5>";   
+         agreement="승인";
+      }else if(a[0].progress ==5){
+         progress="<h5>진행 상태 : 거래종료</h5>";   
+         agreement="승인";
+      }else if(a[0].progress ==6){
+         progress="<h5>진행 상태 : 취소</h5>";   
+         agreement="취소";
+      }else if(a[0].progress ==7){
+         progress="<h5>진행 상태 : 취소진행중</h5>";   
+         agreement="승인";
+      }
+      if(a[0].pay_status ==1){
+         pay_status="완료"
+      }else if(a[0].pay_status ==2){
+         pay_status="미결제";
+      }/* else if(a[i].pay_status ==3){
+         pay_status="계좌이체 완료";   
+      }else if(a[i].pay_status ==4){
+         pay_status="무통장입금 완료";    */
+      else if(a[0].pay_status ==3){
+         pay_status="취소";   
+      }
+        var place = a[0].place;
+        var festival_name = a[0].festival_name;
+        
+        $("#truck_name").text("트럭명 : "+a[0].brandname);
+        $("#truck_name").after("<p>전화번호 :"+a[0].telephone+"</p>");
+            
+        $("#callinfo").after("<h4>행사장명 :"
+                + a[0].festival_name
+                + "</h4>"
+                +"<h4>행사일정 :"
+                + a[0].startdate
+                + "~"
+                + a[0].enddate
+                +"</h4>"
+                +"<h4>행사시간 :"
+                +a[0].festival_starttime
+                +"~"
+                +a[0].festival_endtime
+                +"</h4>"
+                +"<h4>행사장소 :" 
+                + a[0].place
+                +"</h4>"
+                +"<h4>푸드트럭 섭외비용 :"
+                + a[0].price
+                +"</h4>"
+                +"<h4>추가요구사항 :" 
+                +a[0].content
+                +"</h4>"
+      );
+        $("#pay").after(progress
+                 +"<input type='hidden' value='"
+                 + a[0].merchant_uid
+                 +"'>"
+        );
+        $("#pay_status").text("결제상태 : "+pay_status);
+        $("#agreement").text("승인상태 : " + agreement);
+        }
+    });
+$(this).click(function(e){
+   console.log(e);
+   var target = e.target;
+   var temp= $(target).attr('class');
+   if(temp=='cancel1'){
+      //alert(temp);
+      //var a= target.parents('tr');
+      if(confirm("아직 트럭이 승낙을 하지않았습니다. 취소를 하시겠습니까?")){
+      //console.log($(target).closest('div')html());
+        var merchant_uid = $(target).closest('div').find('input').val();
+        console.log(merchant_uid);
+      cancel(merchant_uid);
+      }
+   }else if(temp=='confirm2'){
+      //alert(temp);
+      if(confirm("트럭이 행사장에 도착하신게 맞습니까? 혹시 행사장에 아직 도착하지 않았다면 취소를 눌러주세요 확인을 누르시면 취소가 어려울수도 있으니 트럭이 행사장에 도착하였다면 확인을 눌러주세요")){
+      //console.log($(target).closest('tr').html());
+      var meid = $(target).closest('div').find('input').val();
+      var a = [meid,3];
+      update(a);
+      }
+   }else if(temp=='cancel3'){
+      if(confirm("이미 확인을 하셨기 때문에 취소가 바로 되지 않습니다. 상대방과 충분히 합의후에 취소신청을 하셨다면 네를 눌러주세요")){
+      //console.log($(target).closest('tr').html());
+      var meid = $(target).closest('div').find('input').val();
+      var a = [meid,7];
+      update(a);
+      }
+   }else if(temp=='confirm4'){
+      //alert(temp);
+      if(confirm("트럭이 행사장에 도착하였다면 확인을 눌러주세요 확인을 누르면 거래가 완료됩니다.")){
+      //console.log($(target).closest('tr').html());
+      var meid = $(target).closest('div').find('input').val();
+      var a = [meid,5];
+      update(a);
+      }
+   }else if(temp=='cancel2'){
+      //alert(temp);
+      //confirm("트럭이 행사장에 도착하였다면 확인을 눌러주세요 확인을 누르면 거래가 완료됩니다.");
+      if(confirm("트럭이 승낙을 하였습니다. 취소를 하시겠습니까?")){
+      //console.log($(target).closest('tr').find('input').val());
+      var merchant_uid = $(target).closest('div').find('input').val();
+      cancel(merchant_uid);
+      }
+   }else if(temp=='navbar-toggler-icon' && $(target).parent('button.navbar-toggler').attr('aria-expanded')=='false') {
+            $(target).parent('button.navbar-toggler').attr('aria-expanded','true');
+            $('.navbar-collapse').addClass('show');
+         }else if(temp=='navbar-toggler-icon' && $(target).parent('button.navbar-toggler').attr('aria-expanded')=='true') {
+            $(target).parent('button.navbar-toggler').attr('aria-expanded','false');
+            $(target).parent('button.navbar-toggler').addClass('collapsed');
+            $('.navbar-collapse').removeClass('show');
+         }
+   });
+    function cancel(i){
+      var merchant_uid = i;
+      alert(merchant_uid);
+         $.ajax({
+            type:"post",
+            url:"http://39.127.7.64:8080/pay/GetPayment",
+            data:{
+               merchant_uid:i
+            },
+            success:function(data){   
+               console.log(data);
+               $.ajax({
+                   url:"http://39.127.7.64:3000/cardrefund",
+                   crossOrigin:true,
+                    "type": "POST",
+                     "contentType": "application/json",
+                     "data": JSON.stringify({
+                       "merchant_uid": ""+data.merchant_uid+"", // 주문번호
+                       "cancel_request_amount": ""+data.price+"", // 환불금액
+                       "reason": "행사측 단순 취소" // 환불사유
+                       //"refund_holder": "홍길동", // [가상계좌 환불시 필수입력] 환불 가상계좌 예금주
+                       //"refund_bank": "88" // [가상계좌 환불시 필수입력] 환불 가상계좌 은행코드(ex. KG이니시스의 경우 신한은행은 88번)
+                       //"refund_account": "56211105948400" // [가상계좌 환불시 필수입력] 환불 가상계좌 번호
+                     }),
+                     "dataType": "json"
+                   }).done(function(result) { // 환불 성공시 로직 
+                      console.log(result);
+                      console.log(result.merchant_uid);
+                      if(result=="error"){
+                         console.log(result);
+                         alert("취소 실패");
+                      }else{
+                         $.ajax({
+                            url:"http://39.127.7.64:8080/pay/Callrefund",
+                            async:false,
+                            type:"post",
+                            data:{
+                              merchant_uid : result.merchant_uid,
+                              progress :6,
+                              pay_status : 3
+                              
+                            },
+                            success:function(data){
+                              if(data=='success'){
+                              window.location.reload();
+                              }else{
+                                 alert("실패");
+                              }
+                            }
+                         });
+                      }
+                       
+                   }).fail(function(error) { // 환불 실패시 로직
+                     alert(error);
+                     console.log(error);
+                     alert("환불 실패1");
+                   });
+            }
+         });
+   }
+   function update(i){
+      var a = i;
+      console.log(i[0]);
+      console.log(i[1]);
+      console.log(i);
+      $.ajax({
+         url:"http://39.127.7.64:8080/pay/Callrefund",
+         type:"post",
+         data:{
+            merchant_uid:i[0],
+            progress :i[1]
+         },
+         success:function(data){
+            if(data=='success'){
+               window.location.reload();
+            }else{
+               alert("실패");
+            }
+            
+         }
+      });
+      
+   }
+});
+</script>
+</head>
+<body>
+<div id="navbar" class=""></div>
+<h1>호출요청 상세정보</h1>
+<div style="border: 1px solid;">
+    <div style="border: 1px solid;"><h2>푸드트럭 정보</h2></div>
+    <p id="truck_name"></p>
+</div>
+<div style="border: 1px solid;">
+    <div id="callinfo"style="border: 1px solid;"><h2>요청 정보</h2></div>
+</div>
+<div style="border: 1px solid;">
+    <div id="pay" style="border: 1px solid;">상태</div>
+    <!-- <h5 id="progress"></h5> -->
+    <h5 id="pay_status"></h5>
+    <h5 id="agreement"></h5>
+</div>
+</body>
+</html>

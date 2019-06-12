@@ -18,7 +18,7 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
@@ -26,33 +26,33 @@ var app = {
     //
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         this.receivedEvent('deviceready');
         //FCM 알림 받았는지 아닌지
-        FCMPlugin.onNotification( function(data) {
-            if(data.wasUpdated) {
+        FCMPlugin.onNotification(function (data) {
+            if (data.wasUpdated) {
                 //alert(data);
-            }else {
+            } else {
                 //alert(JSON.stringify(data));
                 alert(data.body);
             }
-        },function (msg) {
-            console.log("onNotification callback successfully registered: "+ msg);
-        },function(err) {
+        }, function (msg) {
+            console.log("onNotification callback successfully registered: " + msg);
+        }, function (err) {
             console.log("Error registering onNotification callback :  " + err);
         });
         FCMPlugin.subscribeToTopic('all');
         //window.plugins.sim.getSimInfo(successCallback, errorCallback);
         function successCallback(result) {
             //alert(JSON.stringify(result));
-            telephone=result.phoneNumber;
-            if(result.mnc =="05") {
-                telephone=telephone.substr(3);
-            }else if(result.mnc =="08") {
-                telephone=telephone.substr(5);
+            telephone = result.phoneNumber;
+            if (result.mnc == "05") {
+                telephone = telephone.substr(3);
+            } else if (result.mnc == "08") {
+                telephone = telephone.substr(5);
             }
-            localStorage['phoneNumber']=telephone;
-            FCMPlugin.subscribeToTopic('phone_number-'+telephone);
+            localStorage['phoneNumber'] = telephone;
+            FCMPlugin.subscribeToTopic('phone_number-' + telephone);
             //alert(telephone);
         }
         function errorCallback(err) {
@@ -63,14 +63,14 @@ var app = {
         hasReadPermission();
         requestReadPermission();
         function hasReadPermission() {
-            window.plugins.sim.hasReadPermission(function(data){
+            window.plugins.sim.hasReadPermission(function (data) {
                 //alert("권한 갖고있음?");
             }, errorCallback);
-            
+
         }
         // request permission
         function requestReadPermission() {
-            window.plugins.sim.requestReadPermission(function(result) {
+            window.plugins.sim.requestReadPermission(function (result) {
                 //alert("권한 요청");
             }, errorCallback);
             window.plugins.sim.getSimInfo(successCallback, errorCallback);
@@ -78,15 +78,14 @@ var app = {
         StatusBar.overlaysWebView(true);
         StatusBar.styleDefault();
         StatusBar.show();
-        window.addEventListener('statusTap', function() {
+        window.addEventListener('statusTap', function () {
             // scroll-up with document.body.scrollTop = 0; or do whatever you want
             document.body.scrollTop = 0;
         });
-      
     },
 
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function (id) {
         var parentElement = document.getElementById(id);
         console.log('Received Event: ' + id);
     }

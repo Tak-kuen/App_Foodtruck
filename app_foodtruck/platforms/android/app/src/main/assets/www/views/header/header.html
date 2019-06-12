@@ -1,83 +1,195 @@
    <!-- Navigation -->
-   <div class="container">
-		<a class="navbar-brand" href="../main/main.html">당신의 푸드트럭!</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-		   data-target="#navbarResponsive" aria-controls="navbarResponsive"
-		   aria-expanded="false" aria-label="Toggle navigation">
-		   <span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-		   <ul class="navbar-nav ml-auto">
+   <style>
+	@font-face {font-family: 'yg-jalnan';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');font-weight: normal;font-style: normal; } 
+
+.fixed{
+width: 140%;
+top: 0;
+right: 0;
+left: -30%;
+z-index: 1030;
+}
+.carousel-item {
+ height: 65vh;
+ min-height: 350px;
+ background: no-repeat center center scroll;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
+#main{
+
+
+ height: 50px;
+ width:80%;
+ 
+ 
+}
+
+.navbar{
+z-index:2;
+margin-top:3%;
+margin-left:12%;
+margin-right:12%;
+height: 100px;
+border-radius: 10px;
+}
+
+/* #top-right {
+
+ padding: 0 auto;
+} */
+
+/* #top-right {
+
+ padding: 0 auto;
+} */
+
+#top-right {
+ margin-top: 50px;
+}
+.test{
+
+ margin-left:20%;
+ margin-right:20%;
+  font-family: 'yg-jalnan';
+ font-size: 120%;
+ font-weight: 700;
+ 
+ 
+}
+.navbar-light .navbar-brand {
+  color: rgba(0, 0, 0, .9);
+  font-family: 'yg-jalnan';
+  width: 50%;
+  position: relative;
   
-			  <li class="nav-item active"><a class="nav-link" href="#">트럭소개
-					<span class="sr-only">(current)</span>
-			  </a></li>
-			  <li class="nav-item"><a class="nav-link" href="../search/search.html">트럭검색</a></li>
-			  <li class="nav-item"><a class="nav-link" href="../announce/area.html">모집공고</a></li>
-			  <li class="nav-item"><a class="nav-link" href="#">앱 다운로드</a></li>
-			  <li class="nav-item"><a class="nav-link" href="../help/helpMain.html">고객센터</a></li>
-		   </ul>
-		   <div id="top-right">
-			  <div id="haveToLogin">
-			  <span id="login" class="badge badge-light"><a href="../login/login.html">로그인</a></span>
-			  <span class="badge badge-light"><a href="../login/registerAgree.html">회원가입</a></span>
-			  </div>
-			  <div id="logined">
-			  <span id="nickname" class="badge badge-light"><a href="#"></a></span>
-			  <span id="customer" class="badge badge-light"><a href="../customer/mypage.html">마이페이지</a></span>
-			  <span id="logout" class="badge badge-light"><a href="#">로그아웃</a></span>
-			  <span id="seller" class="badge badge-light"><a href="#"></a></span>
-			  </div>
-		   </div>
-		</div>
-	 </div>
-	 <script>
-	 $(function() {
-		$('#logined').hide();
-		if((localStorage['app_id']!=null) && (localStorage['app_id']!="")) {
-		   $('#haveToLogin').hide();
-		   $('#logined').show();
-		   //alert(localStorage['app_id']+"" +localStorage['app_pw']);
-		   var query =  {
-			  email: localStorage['app_id'],
-			  password: localStorage['app_pw']
-		   };
-		   $.ajax({
-			  type:"post",
-			  url:"http://39.127.7.90:8080/m.login",
-			  data: JSON.stringify(query),
-			  contentType:"application/json; chartset=UTF-8",
-			  success:function(data){
-				 if("idfail"==data){
-					alert("해당 아이디가없습니다");
-				 }else if("pwfail"==data){
-					alert("비밀번호가 틀렸습니다");
-				 }else{
-					var json =JSON.parse(data);
-					//alert(data);
-					if(json.foodtruck) {
-					   sessionStorage.setItem('foodtruck',json.foodtruck.truck_code);
-					   $('#seller>a').html("트럭관리").attr("href","../seller/sellerMain.html");
-					}else {
-					   $('#seller>a').html("트럭등록").attr("href","../login/registerAgree.html");
-					}
-					sessionStorage.setItem('user',json.user);
-					$('#nickname>a').html(json.user.nickname);
-				 }
-			  },error:function(err) {
-				 alert(JSON.stringify(err));
-			  }
-		   });
-		}else {
-		   $('#nickname>a').html(sessionStorage.getItem('user').nickname);
-		}
-		if(localStorage['token']==null || localStorage['tokenAgree']==0) {
-  
-		}
-		$('#logout').on('click',function() {
-		   localStorage.removeItem('app_id');
-		   localStorage.removeItem('app_pw');
-		   location.href="../main/main.html";
-		});
-	 });
-	 </script>
+}
+a{
+ color: rgb(255, 94, 24);
+
+
+}
+.collapse.show{
+ display: block;
+ text-align: center;
+ background-color: white;
+ margin-top: 5px;
+}
+.navbar-collapse {
+  position: relative;
+  left: 10%;
+  font-size: 100%;
+  width: 300%;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: rgba(0, 0, 0, .9);
+}
+
+.navbar-light .navbar-nav .nav-link {
+ 
+color: rgba(0,0,0,.9); 
+}
+
+light .navbar-nav .nav-link:hover{
+color: rgba(255, 94, 24); 
+}
+.collapse navbar-collapse{
+ margin-left: 300px;
+}
+.foodtruck{
+ width: 100%;
+  position: relative;
+   right: 20%
+}
+.fixed{
+width: 140%;
+top: 0;
+right: 0;
+left: -31.5%;
+z-index: 1030;
+}
+ 
+ </style>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed">
+ <div id="main" class="container">
+	   <a class="navbar-brand" href="../main/main.html" ><img class="foodtruck" src="../../image/yourfoodtruck_logo.png"></a>
+	<!-- <a class="navbar-brand" href="../main/main.html">당신의 푸드트럭!</a> -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+	   data-target="#navbarResponsive" aria-controls="navbarResponsive"
+	   aria-expanded="false" aria-label="Toggle navigation">
+	   <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+	   <ul class="navbar-nav ml-auto">
+		 <li class="nav-item"><a class="nav-link" href="../search/search.html">트럭검색</a></li>
+		 <li class="nav-item"><a class="nav-link" href="../announce/area.html">모집공고</a></li>
+		 <li class="nav-item"><a class="nav-link" href="../help/helpMain.html">고객센터</a></li>
+	   </ul>
+	   <div id="top-right">
+		 <div id="haveToLogin">
+		 <span id="login" class="badge badge-light"><a href="../login/login.html">로그인</a></span>
+		 <span class="badge badge-light"><a href="../login/registerAgree.html">회원가입</a></span>
+		 </div>
+		 <div id="logined">
+		 <span id="nickname" class="badge badge-light"><a href="#"></a></span>
+		 <span id="customer" class="badge badge-light"><a href="../customer/mypage.html">마이페이지</a></span>
+		 <span id="logout" class="badge badge-light"><a href="#">로그아웃</a></span>
+		 <span id="seller" class="badge badge-light"><a href="#"></a></span>
+		 </div>
+	   </div>
+	</div>
+  </div>
+ </nav>
+  <script>
+  $(function() {
+	$('#logined').hide();
+	if((localStorage['app_id']!=null) && (localStorage['app_id']!="")) {
+	   $('#haveToLogin').hide();
+	   $('#logined').show();
+	   //alert(localStorage['app_id']+"" +localStorage['app_pw']);
+	   var query =  {
+		 email: localStorage['app_id'],
+		 password: localStorage['app_pw']
+	   };
+	   $.ajax({
+		 type:"post",
+		 url:"http://39.127.7.90:8080/m.login",
+		 data: JSON.stringify(query),
+		 contentType:"application/json; chartset=UTF-8",
+		 success:function(data){
+		   if("idfail"==data){
+			 alert("해당 아이디가없습니다");
+		   }else if("pwfail"==data){
+			 alert("비밀번호가 틀렸습니다");
+		   }else{
+			 var json =JSON.parse(data);
+			 //alert(data);
+			 if(json.foodtruck) {
+				sessionStorage.setItem('foodtruck',json.foodtruck.truck_code);
+				$('#seller>a').html("트럭관리").attr("href","../seller/sellerMain.html");
+			 }else {
+				$('#seller>a').html("트럭등록").attr("href","../login/registerAgree.html");
+			 }
+			 sessionStorage.setItem('user',json.user);
+			 $('#nickname>a').html(json.user.nickname);
+		   }
+		 },error:function(err) {
+		   alert(JSON.stringify(err));
+		 }
+	   });
+	}else {
+	   $('#nickname>a').html(sessionStorage.getItem('user').nickname);
+	}
+	if(localStorage['token']==null || localStorage['tokenAgree']==0) {
+
+	}
+	$('#logout').on('click',function() {
+	   localStorage.removeItem('app_id');
+	   localStorage.removeItem('app_pw');
+	   location.href="../main/main.html";
+	});
+  });
+  </script>

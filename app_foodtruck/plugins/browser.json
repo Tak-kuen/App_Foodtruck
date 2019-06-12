@@ -21,9 +21,6 @@
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.food.project"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.food.project"
     }
   },
   "dependent_plugins": {}

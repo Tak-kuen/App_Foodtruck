@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<!-- <meta http-equiv="Content-Security-Policy"
 		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
@@ -13,47 +14,92 @@
 	<!-- <script type="text/javascript" src="../../js/seller/sellerMain.js"></script> -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="../../cordova.js"></script>
-	<script type="text/javascript" src="../../js/index.js"></script>
 	<script type="text/javascript" src="../../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 	<style>
-		#cuorder, #seorder{
-			margin-top:13%;
+		#cuorder,
+		#seorder {
+			margin-top: 13%;
 			display: inline-block;
 			width: 15em;
 			height: 13em;
 		}
-		#button{
-			margin :0 auto;
-			width:100%;
+
+		#button {
+			margin: 0 auto;
+			width: 100%;
 			text-align: center;
 		}
 	</style>
 </head>
+
 <body>
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-</nav>
-<div class="container">
-	<div class="row">
-		<div id="sideMenuBar"class="col-md-3">
-		</div>
-		<div class="col-md-9">
-			<div id="button">
-				<a href="cuorder.html"><button id="cuorder" >현장 고객용</button></a>
-				<a href="seorder.html"><button id="seorder" >현장 상인용</button></a>
+	<div id="navbar">
+	</div>
+	<div class="container">
+		<div class="row">
+			<div id="sideMenuBar" class="col-md-3">
+			</div>
+			<div class="col-md-9">
+				<div id="button">
+					<a href="cuorder.html"><button id="cuorder">현장 고객용</button></a>
+					<button id="seorder">현장 상인용</button>
+					<input type="hidden" id="lat_y"><input type="hidden" id="lng_x">
+					<div id="22"></div>
+					<div id="23"></div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<script>
-	$(document).ready(function () {
-		var init = function () {
-			$('#navbar').load("../header/header.html");
-	
-			$('#sideMenuBar').load("sideMenuBar.html");
-		}
-		init();
-	});
-</script>
+	<script>
+		var locationVO = {};
+		// $(document).on('deviceready',onDeviceReady);
+		// function onDeviceReady() {
+		// 	var geo_id = navigator.geolocation.getCurrentPosition(function (position) {
+		// 		locationVO.lat_y = position.coords.latitude + "";
+		// 		locationVO.lng_x = position.coords.longitude + "";
+		// 		locationVO.truck_code = localStorage['truck_code'];
+		// 		alert(JSON.stringify(locationVO));
+		// 	}, function (err) {
+		// 		alert("[" + err.code + "]" + err.message);
+		// 	},{maximumAge:60000, timeout:30000,enableHighAccuracy:true});
+		// }
+		$(document).ready(function () {
+			var init = function () {
+				$('#navbar').load("../header/header.html");
+
+				$('#sideMenuBar').load("sideMenuBar.html");
+			}
+			init();
+			if (navigator.geolocation) {
+           		navigator.geolocation.getCurrentPosition(function(position) {
+					alert(JSON.stringify(position));
+                	locationVO.lat_y = position.coords.latitude + "";
+					locationVO.lng_x = position.coords.longitude + "";
+					locationVO.truck_code = localStorage['truck_code'];
+					alert(JSON.stringify(locationVO));
+            	}, function(error) {
+            		alert('Error occurred. Error code: ' + error.code);         
+            	},{timeout:10000});
+        	}else{
+            	alert('no geolocation support');
+        	}
+			$('#seorder').click(function(){
+				$.ajax({
+					type: "post",
+					url: "http://39.127.7.90:8080/m.seller/location",
+					data: JSON.stringify(locationVO),
+					contentType: "application/json; chartset=UTF-8",
+					success:function(data) {
+						alert("성공");
+						location.href="../seller/seorder.html";
+					},error:function(err) {
+						alert(JSON.stringify(err));
+					}
+				});
+			});
+		}); 
+	</script>
 </body>
+
 </html>

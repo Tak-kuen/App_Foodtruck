@@ -1,454 +1,541 @@
 <style>
 
-#fr {
-	margin-left: 40%;
-}
-
-.profile-teaser-left {
-	float: left;
-	width: 20%;
-	margin-right: 1%;
-}
-
-.profile-img img {
-	width: 100%;
-	height: auto;
-}
-
-.profile-teaser-main {
-	float: left;
-	width: 79%;
-}
-</style>
-<script></script>
-<meta name="format-detection" content="telephone=no">
-<meta name="msapplication-tap-highlight" content="no">
-<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-<link rel="stylesheet" href="../../css/bootstrap.min.css">
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top"></nav>
-<div style="margin-top: 180px; border: solid 1px;"></div>
-<!-- <div id="menu_wrap" class="bg_white"> -->
-<!--    <div class="option"> -->
-<form id="fr">
-   <select id="select" onchange="change()">
-      <option value='map'>지도</option>
-      <option value='list'>목록</option>
-   </select> 
-   검색 : <input type="text" value="" id="keyword" size="15"> <input
-      id="submit" type="button" value="검색하기">
-</form>
-<div id="list" style="display: none">
-	<div class="container">
-         <div class="row">
-            <div id="list-group" class="list-group">
-   
-            </div>
-         </div>
-      </div>
-</div>
-<!--    </div>
-   <hr>
-   <ul id="placesList"></ul>
-   <div id="pagination"></div> -->
-<!-- </div> -->
-
-<div id="map" style="width:100%;height:400px; display: block;"></div>
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo"></script>
-<script type="text/javascript" src="../../js/MarkerClustering.js"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo&submodules=geocoder"></script>
-<!-- <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=zprqsl0tqo"></script> -->
-<!-- <script type="text/javascript"
-   src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04b9ba1fd8fa1800dc5a03023c8372db&libraries=clusterer"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04b9ba1fd8fa1800dc5a03023c8372db&libraries=services"></script> -->
-<script>
-   $(document).ready(function(){
-    var init=function() {
-			$('#navbar').load("../header/header.html");
-		}
-		init();
-
-      var list;
-      $.ajax({
-         type:"post",
-         url:"http://39.127.7.90:8080/m.search/load",
-         contentType:"application/json; charset=UTF-8",
-         async:false,
-         success:function(data){
-            console.log(data);
-            abcd(JSON.parse(data));
-         },
-         error:function(data){
-            alert("error");
-         }
-      });
-//list =JSON.parse(list);
-      $("#submit").click(function(){
-        var content= $("#keyword").val();
-        searchAddressToCoordinate(content);
-      });
-
-      
-      $(document.body).on("click",".truck_list",function(){
-        alert("z");
-         var a = $(this);
-         var truck_code = a.find("input").val();
-         sessionStorage['food_code'] = truck_code;
-          location.href="../truck/truckinfo2.html";
-          //"../main/main.html";
-        // location.href="C:\Users\bon300-21\git\App_Foodtruck\app_foodtruck\www\views\truck\truckInfo.html";
-      });
-   
-    // $(this).click(function(e){
-    //     alert("z");
-    //     //alert("z");
-    //    // alert("ㅋ");
-	// console.log(e);
-	// var target = e.target;
-	// var temp= $(target).attr('class');
-    //   //$("#selected")
-    //   console.log(temp);
-    //   });
-function abcd(i){
-   list=i;
-   //console.log(list);
-}
-
-console.log(list);
-var map = new naver.maps.Map("map", {
-        zoom: 2,
-        center: new naver.maps.LatLng(36.2253017, 127.6460516),
-        zoomControl: true,
-        zoomControlOptions: {
-            position: naver.maps.Position.TOP_LEFT,
-            style: naver.maps.ZoomControlStyle.SMALL
-        }
-    }),
-    markers = [];
-    infoWindows = [];
-var htmlMarker1 = {
-        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-1.png);background-size:contain;"></div>',
-        size: N.Size(40, 40),
-        anchor: N.Point(20, 20)
-    },
-    htmlMarker2 = {
-        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-2.png);background-size:contain;"></div>',
-        size: N.Size(40, 40),
-        anchor: N.Point(20, 20)
-    },
-    htmlMarker3 = {
-        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-3.png);background-size:contain;"></div>',
-        size: N.Size(40, 40),
-        anchor: N.Point(20, 20)
-    },
-    htmlMarker4 = {
-        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-4.png);background-size:contain;"></div>',
-        size: N.Size(40, 40),
-        anchor: N.Point(20, 20)
-    },
-    htmlMarker5 = {
-        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-5.png);background-size:contain;"></div>',
-        size: N.Size(40, 40),
-        anchor: N.Point(20, 20)
-    };
-
-   //var data = list;
-   
-   //console.log(data[0]);
-   
-   
-   //var data = accidentDeath.searchResult.accidentDeath;
-   var data = list;
-   console.log(data.length);
-   console.log(data[0].lay_y);
-   console.log(data[0].lng_x);
-for (var i = 0, ii = data.length; i < ii; i++) {
-    console.log(data[i].truck_code);
-    //var spot = data[i],
-        latlng = new naver.maps.LatLng(data[i].lay_y, data[i].lng_x),
-        marker = new naver.maps.Marker({
-            position: latlng
-        });
-        var contentString = [
-        '<div class="iw_inner">',
-        '   <h4>'+data[i].brandname+'</h4>',
-        '   <p>'+data[i].trucknum+'</p><br>',
-        '       <img src="/img/example/hi-seoul.jpg" width="55" height="55" alt="" class="thumb" /><br />',
-        '       <a href="../truck/truckinfo2.html?truck_code='+data[i].truck_code+'">트럭페이지 이동</a><br>',
-        '</div>'].join('');
-    var infoWindow = new naver.maps.InfoWindow({
-        content: contentString,
-        clickable:true 
-    // content: contentString
-   });   
-
-   
-  // var aaf = infoWindow.getContent();
-  // console.log(aaf);
-   //console.log(typeof(aaf));
-  // naver.maps.Event.addListener(infoWindow,"click", info(infoWindow));
-   //console.log(marker);
-   //naver.maps.Event.addListener(marker, "click",makeClickListener(map, marker, infowindow));
-   infoWindows.push(infoWindow);
-
-   //console.log(infowindow);
-   //  if (infowindow.getMap()) {
-   //      infowindow.close();
-   //  } else {
-   //      infowindow.open(map, marker);
-   //  }
-   //});
-   // naver.maps.Event.addListener(marker, "click", function(e) {
-   //  if (infowindow.getMap()) {
-   //      infowindow.close();
-   //  } else {
-   //      infowindow.open(map, marker);
-   //  }
-//});
-
-    markers.push(marker);
-}
-naver.maps.Event.addListener(map, 'idle', function() {
-    updateMarkers(map, markers);
-});
-
-function updateMarkers(map, markers) {
-
-var mapBounds = map.getBounds();
-var marker, position;
-
-for (var i = 0; i < markers.length; i++) {
-
-    marker = markers[i]
-    position = marker.getPosition();
-
-    if (mapBounds.hasLatLng(position)) {
-        showMarker(map, marker);
-    } else {
-        hideMarker(map, marker);
-    }
-}
-}
-
-
-function showMarker(map, marker) {
-
-if (marker.setMap()) return;
-marker.setMap(map);
-}
-
-function hideMarker(map, marker) {
-
-if (!marker.setMap()) return;
-marker.setMap(null);
-}
-function getClickHandler(seq) {
-    return function(e) {
-        //console.log("z");
-        var marker = markers[seq],
-            infoWindow = infoWindows[seq];
-
-        if (infoWindow.getMap()) {
-            infoWindow.close();
-        } else {
-            infoWindow.open(map, marker);
-        }
-    }
-}
-function info(seq) {
-    return function(e) {
-        console.log("z");
-        // var marker = markers[seq],
-        //     infoWindow = infoWindows[seq];
-
-        // if (infoWindow.getMap()) {
-        //     infoWindow.close();
-        // } else {
-        //     infoWindow.open(map, marker);
-        // }
-    }
-}
-
-// function aaaa(seq) {
-//     // return function(e) {
-//     //     var marker = markers[seq],
-//     //         infoWindow = infoWindows[seq];
-
-//     //     if (infoWindow.getMap()) {
-//     //         infoWindow.close();
-//     //     } else {
-//     //         infoWindow.open(map, marker);
-//     //     }
-//     // }
-//     alert("ㅋㅋㅋ");
-// }
-
-
-for (var i=0, ii=markers.length; i<ii; i++) {
-    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
-}
-
-for (var i=0, ii=infoWindows.length; i<ii; i++) {
-    naver.maps.Event.addListener(infoWindows[i], 'click', info(i));
-}
-
-// for (var i=0, ii=markers.length; i<ii; i++) {
-//     naver.maps.Event.addListener(infoWindows[i], 'click', aaaa(i));
-// }
-
-
-// function makeClickListener(map, marker, infowindow) {
-//            return function() {
-//                infowindow.open(map, marker);
-//            };
-//        }
-
-
-var markerClustering = new MarkerClustering({
-    minClusterSize: 2,
-    maxZoom: 8,
-    map: map,
-    markers: markers,
-    disableClickZoom: false,
-    gridSize: 120,
-    icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
-    indexGenerator: [10, 100, 200, 500, 1000],
-    stylingFunction: function(clusterMarker, count) {
-        $(clusterMarker.getElement()).find('div:first-child').text(count);
-    }
-});
-
-function searchAddressToCoordinate(address) {
-    naver.maps.Service.geocode({
-        query: address
-    }, function(status, response) {
-        if (status === naver.maps.Service.Status.ERROR) {
-            return alert('Something Wrong!');
-        }
-
-        if (response.v2.meta.totalCount === 0) {
-            return alert('totalCount' + response.v2.meta.totalCount);
-        }
-
-        var htmlAddresses = [],
-            item = response.v2.addresses[0],
-            point = new naver.maps.Point(item.x, item.y);
-
-      console.log(point);
-      console.log(item);
-      console.log(htmlAddresses);
-      //   if (item.roadAddress) {
-      //       htmlAddresses.push('[도로명 주소] ' + item.roadAddress);
-      //   }
-
-      //   if (item.jibunAddress) {
-      //       htmlAddresses.push('[지번 주소] ' + item.jibunAddress);
-      //   }
-
-      //   if (item.englishAddress) {
-      //       htmlAddresses.push('[영문명 주소] ' + item.englishAddress);
-      //   }
+        .wrap {/* position: absolute; left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden; */font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+            .wrap * {padding: 0;margin: 0;}
+            .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+            .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+            .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+            .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+            .info .close:hover {cursor: pointer;}
+            .info .body {position: relative;overflow: hidden;}
+            .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+            .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+            .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+            .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+            /* .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')} */
+            .info .link {color: #5085BB;}
+            .list-group { height:500px; overflow-y: auto;}
         
-
-        //map.fitBounds(point);
-
-      var select= $("#select option:selected").val(); 
-       if(select =="list") {//선택한값이 list라면
-         //var position = getposition();
-         //console.log(position);
-         //var posit = JSON.stringify(position);
-        // var sub = posit.split(',');
-        // var lng = sub[0].substr(6);
-        // var xtemp = sub[1].substr(5);
-        // var lat = xtemp.substr(0,xtemp.length-1);
-         // console.log(lng);
-         // console.log(lat);
+        #fr {
+               width: 100%;
+                margin-left: 15%;
+                margin-top: 5%;
+        
+            
+        }
+        h4{
+            padding: 5px 0 0 10px;
+            height: 40px;
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        
+        .profile-teaser-left {
+           float: left;
+           width: 20%;
+           margin-right: 1%;
+        }
+        
+        .profile-img img {
+           width: 90px;
+           height: auto;
+        }
+        .btn{
+           background-color: rgb(255, 94, 24);
+           color: white;
+        }
+        .row {
          
-         var list2 = [];
-         for(var i=0;i<data.length;i++){
-             var a = getDistanceFromLatLonInKm(point.y,point.x,data[i].lay_y,data[i].lng_x); 
-             a = a.toPrecision(3); //소숫점자리 제한
-             a = a*1000; // 정수로만듬
-             //alert(a);
-             if(a<=3000){ //3km내 반경안에있으면 리스트추가
-                //alert("추가");
-                //JSON.stringfiy(obj[i]);
-                //console.log(JSON.stringfiy(obj[i]));
-                list2.push(data[i]);//${"list[i].name"}
+            
+           
+            border-top: 5px solid;
+            border-color: darkgrey;
+        }
+        .list-group {
+                height: auto ;
+                border-radius: 20px;
+            overflow-y: auto;
+            width: 100%;
+        }
+        .profile-name{
+            font-size: 25px;
+        
+        }
+        .profile-teaser-main {
+            float: left;
+            width: 79%;
+            font-size: 40%;
+            position: relative;
+            left: 10%;
+            font-family: 'yg-jalnan';
+        }
+        #keyword{
+          
+            width: 30%;
+        }
+        #search{
+           margin-left:27%;
+           margin-top: 40px;
+        }
+        .h2, h2 {
+            font-size: 2rem;
+            font-family: 'yg-jalnan';
+        }
+        .iw_inner{
+        
+            font-size: 11px;
+            font-family: 'yg-jalnan';
+        }
+        p{
+            position: relative;
+            margin: 13px 0 0 90px;
+        }
+        .thumb{
+            vertical-align: middle;
+            border-style: none;
+            margin-top: -55px;
+            padding-left: 10px;
+            padding-top: 5px;
+        
+        }
+        .go{
+        
+            color: rgb(255, 94, 24);
+            margin-left: 70%;
+        }
+        </style>
+        <script></script>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <div id="navbar" ></div>
+        <div style="margin-top: 30px; border: solid 2px;border-color: tomato;"></div>
+        <!-- <div id="menu_wrap" class="bg_white"> -->
+        <!--    <div class="option"> -->
+        <form id="fr">
+           <select id="select" onchange="change()">
+              <option value='map'>지도</option>
+              <option value='list'>목록</option>
+           </select> 
+           검색 : <input type="text" value="" id="keyword" size="15" placeholder="주소입력"> <input
+              id="submit" type="button" value="검색"  class="btn">
+        </form>
+        <div id="list" style="display: none">
+           <div class="container">
+                 <div class="row">
+                    <div id="list-group" class="list-group">
+           
+                    </div>
+                 </div>
+              </div>
+        </div>
+        <!--    </div>
+           <hr>
+           <ul id="placesList"></ul>
+           <div id="pagination"></div> -->
+        <!-- </div> -->
+        
+        <div id="map" style="width:100%;height:100%; margin:0 auto; "></div>
+        <script type="text/javascript" src="../../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo"></script>
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo"></script>
+        <script type="text/javascript" src="../../js/MarkerClustering.js"></script>
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zprqsl0tqo&submodules=geocoder"></script>
+        <!-- <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=zprqsl0tqo"></script> -->
+        <!-- <script type="text/javascript"
+           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04b9ba1fd8fa1800dc5a03023c8372db&libraries=clusterer"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04b9ba1fd8fa1800dc5a03023c8372db&libraries=services"></script> -->
+        <script>
+           $(document).ready(function(){
+            var init=function() {
+                 $('#navbar').load("../header/header.html");
+              }
+              init();
+        
+              var list;
+              $.ajax({
+                 type:"post",
+                 url:"http://39.127.7.90:8080/m.search/load",
+                 contentType:"application/json; charset=UTF-8",
+                 async:false,
+                 success:function(data){
+                    console.log(data);
+                    abcd(JSON.parse(data));
+                 },
+                 error:function(data){
+                    alert("error");
+                 }
+              });
+        //list =JSON.parse(list);
+              $("#submit").click(function(){
+                var content= $("#keyword").val();
+                searchAddressToCoordinate(content);
+              });
+        
+              
+              $(document.body).on("click",".truck_list",function(){
+                alert("z");
+                 var a = $(this);
+                 var truck_code = a.find("input").val();
+                 sessionStorage['food_code'] = truck_code;
+                  location.href="../truck/truckinfo2.html?truck_code="+localStorage['truck_code'];
+                  //"../main/main.html";
+                // location.href="C:\Users\bon300-21\git\App_Foodtruck\app_foodtruck\www\views\truck\truckInfo.html";
+              });
+           
+            // $(this).click(function(e){
+            //     alert("z");
+            //     //alert("z");
+            //    // alert("ㅋ");
+           // console.log(e);
+           // var target = e.target;
+           // var temp= $(target).attr('class');
+            //   //$("#selected")
+            //   console.log(temp);
+            //   });
+        function abcd(i){
+           list=i;
+           //console.log(list);
+        }
+        
+        console.log(list);
+        var map = new naver.maps.Map("map", {
+                zoom: 2,
+                center: new naver.maps.LatLng(36.2253017, 127.6460516),
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: naver.maps.Position.TOP_LEFT,
+                    style: naver.maps.ZoomControlStyle.SMALL
+                }
+            }),
+            markers = [];
+            infoWindows = [];
+        var htmlMarker1 = {
+                content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-1.png);background-size:contain;"></div>',
+                size: N.Size(40, 40),
+                anchor: N.Point(20, 20)
+            },
+            htmlMarker2 = {
+                content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-2.png);background-size:contain;"></div>',
+                size: N.Size(40, 40),
+                anchor: N.Point(20, 20)
+            },
+            htmlMarker3 = {
+                content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-3.png);background-size:contain;"></div>',
+                size: N.Size(40, 40),
+                anchor: N.Point(20, 20)
+            },
+            htmlMarker4 = {
+                content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-4.png);background-size:contain;"></div>',
+                size: N.Size(40, 40),
+                anchor: N.Point(20, 20)
+            },
+            htmlMarker5 = {
+                content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(../../image/cluster-marker-5.png);background-size:contain;"></div>',
+                size: N.Size(40, 40),
+                anchor: N.Point(20, 20)
+            };
+        
+           //var data = list;
+           
+           //console.log(data[0]);
+           
+           
+           //var data = accidentDeath.searchResult.accidentDeath;
+           var data = list;
+           console.log(data.length);
+           console.log(data[0].lay_y);
+           console.log(data[0].lng_x);
+        for (var i = 0, ii = data.length; i < ii; i++) {
+            console.log(data[i].truck_code);
+            //var spot = data[i],
+                latlng = new naver.maps.LatLng(data[i].lay_y, data[i].lng_x),
+                marker = new naver.maps.Marker({
+                    position: latlng
+                });
+                var contentString = [
+                '<div class="iw_inner" style="width:240px">',
+                '   <h4>'+data[i].brandname+'</h4>',
+                '   <p>'+data[i].trucknum+'</p><br>',
+                '       <img src="/img/example/hi-seoul.jpg" width="55" height="55" margin-top="-55" padding-left="10"alt="" class="thumb" /><br />',
+                '       <a href="../truck/truckinfo2.html?truck_code='+data[i].truck_code+'" class="go">트럭페이지</a><br>',
+                '</div>'].join('');
+            var infoWindow = new naver.maps.InfoWindow({
+                content: contentString,
+                clickable:true 
+            // content: contentString
+           });   
+        
+           
+          // var aaf = infoWindow.getContent();
+          // console.log(aaf);
+           //console.log(typeof(aaf));
+          // naver.maps.Event.addListener(infoWindow,"click", info(infoWindow));
+           //console.log(marker);
+           //naver.maps.Event.addListener(marker, "click",makeClickListener(map, marker, infowindow));
+           infoWindows.push(infoWindow);
+        
+           //console.log(infowindow);
+           //  if (infowindow.getMap()) {
+           //      infowindow.close();
+           //  } else {
+           //      infowindow.open(map, marker);
+           //  }
+           //});
+           // naver.maps.Event.addListener(marker, "click", function(e) {
+           //  if (infowindow.getMap()) {
+           //      infowindow.close();
+           //  } else {
+           //      infowindow.open(map, marker);
+           //  }
+        //});
+        
+            markers.push(marker);
+        }
+        naver.maps.Event.addListener(map, 'idle', function() {
+            updateMarkers(map, markers);
+        });
+        
+        function updateMarkers(map, markers) {
+        
+        var mapBounds = map.getBounds();
+        var marker, position;
+        
+        for (var i = 0; i < markers.length; i++) {
+        
+            marker = markers[i]
+            position = marker.getPosition();
+        
+            if (mapBounds.hasLatLng(position)) {
+                showMarker(map, marker);
+            } else {
+                hideMarker(map, marker);
+            }
+        }
+        }
+        
+        
+        function showMarker(map, marker) {
+        
+        if (marker.setMap()) return;
+        marker.setMap(map);
+        }
+        
+        function hideMarker(map, marker) {
+        
+        if (!marker.setMap()) return;
+        marker.setMap(null);
+        }
+        function getClickHandler(seq) {
+            return function(e) {
+                //console.log("z");
+                var marker = markers[seq],
+                    infoWindow = infoWindows[seq];
+        
+                if (infoWindow.getMap()) {
+                    infoWindow.close();
+                } else {
+                    infoWindow.open(map, marker);
+                }
+            }
+        }
+        function info(seq) {
+            return function(e) {
+                console.log("z");
+                // var marker = markers[seq],
+                //     infoWindow = infoWindows[seq];
+        
+                // if (infoWindow.getMap()) {
+                //     infoWindow.close();
+                // } else {
+                //     infoWindow.open(map, marker);
+                // }
+            }
+        }
+        
+        // function aaaa(seq) {
+        //     // return function(e) {
+        //     //     var marker = markers[seq],
+        //     //         infoWindow = infoWindows[seq];
+        
+        //     //     if (infoWindow.getMap()) {
+        //     //         infoWindow.close();
+        //     //     } else {
+        //     //         infoWindow.open(map, marker);
+        //     //     }
+        //     // }
+        //     alert("ㅋㅋㅋ");
+        // }
+        
+        
+        for (var i=0, ii=markers.length; i<ii; i++) {
+            naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+        }
+        
+        for (var i=0, ii=infoWindows.length; i<ii; i++) {
+            naver.maps.Event.addListener(infoWindows[i], 'click', info(i));
+        }
+        
+        // for (var i=0, ii=markers.length; i<ii; i++) {
+        //     naver.maps.Event.addListener(infoWindows[i], 'click', aaaa(i));
+        // }
+        
+        
+        // function makeClickListener(map, marker, infowindow) {
+        //            return function() {
+        //                infowindow.open(map, marker);
+        //            };
+        //        }
+        
+        
+        var markerClustering = new MarkerClustering({
+            minClusterSize: 2,
+            maxZoom: 8,
+            map: map,
+            markers: markers,
+            disableClickZoom: false,
+            gridSize: 120,
+            icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
+            indexGenerator: [10, 100, 200, 500, 1000],
+            stylingFunction: function(clusterMarker, count) {
+                $(clusterMarker.getElement()).find('div:first-child').text(count);
+            }
+        });
+        
+        function searchAddressToCoordinate(address) {
+            naver.maps.Service.geocode({
+                query: address
+            }, function(status, response) {
+                if (status === naver.maps.Service.Status.ERROR) {
+                    return alert('Something Wrong!');
+                }
+        
+                if (response.v2.meta.totalCount === 0) {
+                    return alert('totalCount' + response.v2.meta.totalCount);
+                }
+        
+                var htmlAddresses = [],
+                    item = response.v2.addresses[0],
+                    point = new naver.maps.Point(item.x, item.y);
+        
+              console.log(point);
+              console.log(item);
+              console.log(htmlAddresses);
+              //   if (item.roadAddress) {
+              //       htmlAddresses.push('[도로명 주소] ' + item.roadAddress);
+              //   }
+        
+              //   if (item.jibunAddress) {
+              //       htmlAddresses.push('[지번 주소] ' + item.jibunAddress);
+              //   }
+        
+              //   if (item.englishAddress) {
+              //       htmlAddresses.push('[영문명 주소] ' + item.englishAddress);
+              //   }
                 
-             }else{
-                //alert("안추가");
-             }
-          }
-         $("#list-group").empty();
-         if(list2[0] == null){
-      	 	$("#list-group").append("해당지역 중심부 부터 3km 내에 푸드트럭이 존재하지 않습니다");
-      	 	//alert("fail");
-         }else{ 
-         	for(var i=0;i<list2.length;i++){
-         		//alert("ok");
-         		//var truckcode = ""+list2[i].truck_code;
-         		var a='d';
-         		var c=1;
-         		var truck=list2[i].truck_code;
-             	$("#list-group").append("<div class='list-group-item clearfix truck_list'><input type='hidden' value='"+list2[i].truck_code+"'> <div class='profile-teaser-left'><div class='profile-img'><img src='/resources/image/upload/"+list2[i].truck_url+"'/></div></div><div class='profile-teaser-main'><div class='infobox' style='cursor:pointer'><h2 class='profile-name'>"+list2[i].brandname+"</h2><div class='info'><span class=''>영업시간:</span>" + list2[i].truck_starttime+"~"+list2[i].truck_endtime+"</div><div class='info'><span class=''>트럭번호:</span>" + list2[i].trucknum+"</div></div><br><div class='info'><span class=''>★★★★☆</span> 9.4</div><div class='info'><span class=''>댓글 " + list2[i].total_review + "</span> </div> </div></div></div>");
-         	}
-        	
-         }
-         
-   }else{
-      map.setCenter(point);
-         map.setZoom(8); 
-         console.log(point.x);
-         console.log(point.y);
-   }
-
-
-
-    });
-}
-function reset(){
-   map.setZoom(2);
-}
-
-});
-// function makeClickListener(map,marker,infowindow){
-//     console.log(infowindow);
-//     if (infowindow.getMap()) {
-//         infowindow.close();
-//     } else {
-//         infowindow.open(map, marker);
-//     }
-// }
-function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
-       function deg2rad(deg) {
-           return deg * (Math.PI/180)
-       }
-
-       var R = 6371; // Radius of the earth in km
-       var dLat = deg2rad(lat2-lat1);  // deg2rad below
-       var dLon = deg2rad(lng2-lng1);
-       var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
-       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-       var d = R * c; // Distance in km
-       return d;
-   }
-   function change(){
-    var select= $("#select option:selected").val();
-    if(select == "map"){
-       $("#keyword").val("");
-      // map.setZoom(10);
-      $("#map").css("display",'block');
-      $("#list").css("display",'none');
-   }else if(select == "list"){
-       $("#keyword").val("");
-      $("#map").css("display", 'none');
-      $("#list").css("display", 'block');
-      $("#list-group").empty();
-   }
-}
-   
-</script>
-
+        
+                //map.fitBounds(point);
+        
+              var select= $("#select option:selected").val(); 
+               if(select =="list") {//선택한값이 list라면
+                 //var position = getposition();
+                 //console.log(position);
+                 //var posit = JSON.stringify(position);
+                // var sub = posit.split(',');
+                // var lng = sub[0].substr(6);
+                // var xtemp = sub[1].substr(5);
+                // var lat = xtemp.substr(0,xtemp.length-1);
+                 // console.log(lng);
+                 // console.log(lat);
+                 
+                 var list2 = [];
+                 for(var i=0;i<data.length;i++){
+                     var a = getDistanceFromLatLonInKm(point.y,point.x,data[i].lay_y,data[i].lng_x); 
+                     a = a.toPrecision(3); //소숫점자리 제한
+                     a = a*1000; // 정수로만듬
+                     //alert(a);
+                     if(a<=3000){ //3km내 반경안에있으면 리스트추가
+                        //alert("추가");
+                        //JSON.stringfiy(obj[i]);
+                        //console.log(JSON.stringfiy(obj[i]));
+                        list2.push(data[i]);//${"list[i].name"}
+                        
+                     }else{
+                        //alert("안추가");
+                     }
+                  }
+                 $("#list-group").empty();
+                 if(list2[0] == null){
+                     $("#list-group").append("해당지역 중심부 부터 3km 내에 푸드트럭이 존재하지 않습니다");
+                     //alert("fail");
+                 }else{ 
+                    for(var i=0;i<list2.length;i++){
+                       //alert("ok");
+                       //var truckcode = ""+list2[i].truck_code;
+                       var a='d';
+                       var c=1;
+                       var truck=list2[i].truck_code;
+                        $("#list-group").append("<div class='list-group-item clearfix truck_list'><input type='hidden' value='"+list2[i].truck_code+"'> <div class='profile-teaser-left'><div class='profile-img'><img src='/resources/image/upload/"+list2[i].truck_url+"'/></div></div><div class='profile-teaser-main'><div class='infobox' style='cursor:pointer'><h2 class='profile-name'>"+list2[i].brandname+"</h2><div class='info'><span class=''>영업시간:</span>" + list2[i].truck_starttime+"~"+list2[i].truck_endtime+"</div><div class='info'><span class=''>트럭번호:</span>" + list2[i].trucknum+"</div></div><br><div class='info'><span class=''>★★★★☆</span> 9.4</div><div class='info'><span class=''>댓글 " + list2[i].total_review + "</span> </div> </div></div></div>");
+                    }
+                   
+                 }
+                 
+           }else{
+              map.setCenter(point);
+                 map.setZoom(8); 
+                 console.log(point.x);
+                 console.log(point.y);
+           }
+        
+        
+        
+            });
+        }
+        function reset(){
+           map.setZoom(2);
+        }
+        
+        });
+        // function makeClickListener(map,marker,infowindow){
+        //     console.log(infowindow);
+        //     if (infowindow.getMap()) {
+        //         infowindow.close();
+        //     } else {
+        //         infowindow.open(map, marker);
+        //     }
+        // }
+        function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+               function deg2rad(deg) {
+                   return deg * (Math.PI/180)
+               }
+        
+               var R = 6371; // Radius of the earth in km
+               var dLat = deg2rad(lat2-lat1);  // deg2rad below
+               var dLon = deg2rad(lng2-lng1);
+               var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+               var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+               var d = R * c; // Distance in km
+               return d;
+           }
+           function change(){
+            var select= $("#select option:selected").val();
+            if(select == "map"){
+               $("#keyword").val("");
+              // map.setZoom(10);
+              $("#map").css("display",'block');
+              $("#list").css("display",'none');
+           }else if(select == "list"){
+               $("#keyword").val("");
+              $("#map").css("display", 'none');
+              $("#list").css("display", 'block');
+              $("#list-group").empty();
+           }
+        }
+           
+        </script>

@@ -5,88 +5,68 @@
 <title>당신의 푸드트럭</title>
 <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
 <link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/customercss/customercss.css">
+<link rel="stylesheet" href="../../css/general.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <script type="text/javascript" src="../../cordova.js"></script>
-<script type="text/javascript" src="../../js/index.js"></script>
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function() {
-		var init=function() {
-			$('#navbar').load("../header/header.html");
-		}
-		init();
-	});
-/* $(document).ready(function(){
-  $('.modify').on('click',function(){
-    
-    var a = $(this);
-    var truckcode = a.next().val();
-    
-    alert(truckcode);
-    
-    location.href='/truck/?truck_code='+truckcode;
-    
-    
-  });
-  
-  
-}); */
-</script>
 </head>
 <body>
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
-  </nav>
-  
+  <div id="navbar">
+  </div>
 <div style="overflow: auto" id="with" class="col">
-
   <h1 style="text-align: center; margin-top: 10px;">리뷰 및 평점</h1>
   <br>
-
   <table class="table table-hover" class="col">
-  
     <thead>
       <th>푸드트럭명</th>
       <th>평점</th>
       <th>내용</th>
       <th>등록일</th>
-      <th>관리</th>
     </thead>
     <tbody>
-    <c:forEach var="i" items="${rlist }">
-      <tr>
-        <td>${i.brandname}</td>
-        <td>
-        <c:if test="${i.review_score==1 }">
-        <a id="on"class="on">★</a>
-        </c:if>
-        <c:if test="${i.review_score==2 }">
-        <a id="on"class="on">★★</a>
-        </c:if>
-        <c:if test="${i.review_score==3 }">
-        <a id="on"class="on">★★</a>
-        </c:if>
-        <c:if test="${i.review_score==4 }">
-        <a id="on"class="on">★★★★</a>
-        </c:if>
-        <c:if test="${i.review_score==5 }">
-        <a id="on"class="on">★★★★★</a>
-        </c:if>
-        </td> 
-        <td>${i.review_content }</td>
-        <td>${i.review_regdate }</td>
-        <td>
-          <a href="/truck/send/?truck_code=${i.truck_code}&send=1&review_code=${i.review_code}"><input type="button" class="modify" value="수정/삭제"></a>
-          <input type="hidden" value="${i.truck_code }">
-        </td>
-      </tr>
-      </c:forEach>
-
     </tbody>
-
   </table>
-
 </div>
-
+<script>
+  $(document).ready(function() {
+    var init=function() {
+      $('#navbar').load("../header/header.html");
+    }
+    init();
+    var parent_node=$('tbody');
+    $.ajax({
+      type:"post",
+      url:"http://39.127.7.90:8080/m.customer/review",
+      data:JSON.stringify({email:localStorage['app_id']}),
+      contentType:"application/json; chartset=UTF-8",
+      success:function(data) {
+        //alert(typeof data);
+        alert(data);
+        var json = JSON.parse(data);
+        for(var i=0; i<json.length; i++) {
+          var _tr = $('<tr></tr>');
+          $('<td></td>').text(json[i].brandname).appendTo(_tr);
+          if(json[i].review_score=='1') $('<td></td>').html('<a id="on" class="on">★</a>').appendTo(_tr);
+          else if(json[i].review_score=='2') $('<td></td>').html('<a id="on" class="on">★★</a>').appendTo(_tr);
+          else if(json[i].review_score=='3') $('<td></td>').html('<a id="on" class="on">★★★</a>').appendTo(_tr);
+          else if(json[i].review_score=='4') $('<td></td>').html('<a id="on" class="on">★★★★</a>').appendTo(_tr);
+          else if(json[i].review_score=='5') $('<td></td>').html('<a id="on" class="on">★★★★★</a>').appendTo(_tr);
+          var review_content=json[i].review_content;
+          if(review_content.length>=4) {
+            review_content=review_content.substr(0,5)+"..";
+          }
+          $('<td></td>').text(review_content).appendTo(_tr);
+          $('<td></td>').text(json[i].review_regdate).appendTo(_tr);
+        }
+        _tr.appendTo(parent_node);
+      },error:function(err) {
+        alert(JSON.stringify(err));
+      }
+  
+    });
+  });
+</script>
 </body>
 </html>
